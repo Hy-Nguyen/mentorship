@@ -4,7 +4,7 @@ import SideBarContent from "@/components/SideBarContent";
 export default function SideBar() {
   return (
     <>
-      <div className=" bg-black w-[20%] h-[90vh] p-2 text-black ">
+      <div className=" bg-black w-[15%] h-[90vh] p-2 text-black ">
         <div className="bg-slate-400 w-full h-full p-2 rounded-3xl">
           <Welcome />
           <SideBarContent />

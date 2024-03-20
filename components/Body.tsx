@@ -1,7 +1,13 @@
 export default function Body() {
   return (
     <>
-      <p>hi</p>
+      <div>
+        <div>
+          <QuickAction />
+          <MyMentors />
+        </div>
+        <UserProfile />
+      </div>
     </>
   );
 }

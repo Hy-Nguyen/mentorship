@@ -5,9 +5,10 @@ import Body from "../components/Body";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <div className="flex">
-        <SideBar />
+    <main className="flex min-h-screen flex-row bg-white">
+      <SideBar />
+
+      <div className="flex w-full">
         <Body />
       </div>
     </main>

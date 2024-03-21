@@ -21,11 +21,12 @@ export default function SideNavItem(props: {
     <>
       <Link
         isBlock
+
         href="#"
         color="foreground"
         className="w-full"
       >
-        <p className="mr-4">{props.icon}</p>{" "}
+        <p className="mr-4">{props.icon}</p>
         {props.name}
       </Link>
 

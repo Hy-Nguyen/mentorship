@@ -3,6 +3,7 @@ import { Button } from "@nextui-org/react";
 import {
   Card,
   CardBody,
+  Link,
 } from "@nextui-org/react";
 
 import {
@@ -18,25 +19,18 @@ export default function SideNavItem(props: {
 }) {
   return (
     <>
-      {/* <div className="py-1 ">
-        <Button
-          variant="bordered"
-          startContent={props.icon}
-          fullWidth
-        >
-          <div className="flex flex-col items-start">
-            <div className="flex flex-row items-start">
-              <div className="pl-4">
-                <h1 className="text-xl font-bold text-gray-900">
-                  {props.name}
-                </h1>
-              </div>
-            </div>
-          </div>
-        </Button>
-      </div> */}
+      <Link
+        isBlock
 
-      <div className="py-1">
+        href="#"
+        color="foreground"
+        className="w-full"
+      >
+        <p className="mr-4">{props.icon}</p>
+        {props.name}
+      </Link>
+
+      {/* <div className="py-1">
         <Card
           className="w-full"
           isBlurred
@@ -59,7 +53,7 @@ export default function SideNavItem(props: {
             </CardBody>
           </div>
         </Card>
-      </div>
+      </div> */}
     </>
   );
 }

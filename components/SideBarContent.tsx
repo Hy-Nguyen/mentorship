@@ -1,9 +1,4 @@
 import {
-  Spacer,
-  Divider,
-} from "@nextui-org/react";
-
-import {
   HomeIcon,
   CheckCircleIcon,
   InboxIcon,
@@ -54,11 +49,7 @@ export default function SideBarContent() {
     ),
   };
   return (
-    <div>
-      <Spacer y={5} />
-      <Divider className="" />
-      <Spacer y={5} />
-
+    <div className="">
       <div className="pt-6 flex flex-col items-center">
         {Object.values(navObj).map((item, i) => (
           <div key={i} className=" w-56">

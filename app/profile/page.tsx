@@ -2,38 +2,41 @@ import Image from "next/image";
 import NavBar from "../../components/NavBar";
 import SideBar from "../../components/SideBar";
 import Body from "../../components/Body";
-import HalfBar from "@/components/HalfBar";
 
-export default function Home() {
+import { Card, CardBody } from "@nextui-org/react";
+
+export default function Profile() {
   return (
     <main className="flex min-h-screen flex-col">
       <div className="flex">
-        {/* <SideBar /> */}
-
-        <div className=" bg-black w-[15%] h-[90vh] p-2 text-black ">
-            <div className="bg-slate-400 w-full h-full p-2 rounded-3xl">
-                <Welcome />
-                <SideBarContent />
-            </div>
-        </div>
         
+        <SideBar />
+
+        <div className="flex flex-col w-full">   
+            <Card className=" bg-white w-1/5 h-1/2 p-2 mt-2 text-black ">
+            <CardBody>
+              <p>Hi</p>
+            </CardBody>
+            </Card>
+
+
+            <Card className=" bg-white w-1/5 h-1/2 p-2 mt-2 text-black ">
+            <CardBody>
+              <p>Hi</p>
+            </CardBody>
+            </Card>
+            
+            <Card className=" bg-white w-full h-1/2 p-2 mt-2 text-black ">
+            <CardBody>
+              <p>Hi</p>
+            </CardBody>
+            </Card>
         
-        <div className=" bg-black w-[20%] h-[90vh] p-2 text-black ">
-          <div className="bg-slate-400 w-full h-1/2 p-2 rounded-3xl"></div>
-        </div>
 
-        <div className=" bg-black w-[20%] h-[90vh] p-2 text-black ">
-            <div className="bg-slate-400 w-full h-1/2 p-2 rounded-3xl"></div>
-        </div>
-
-        <div className=" bg-black w-[20%] h-[90vh] p-2 text-black ">
-            <div className="bg-slate-400 w-full h-1/2 p-2 rounded-3xl"></div>
-        </div>
-
-
-
-    </div>
-
+          </div>
+      </div>
+    
     </main>
   );
+  
 }

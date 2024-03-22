@@ -12,28 +12,51 @@ export default function Profile() {
         
         <SideBar />
 
-        <div className="flex flex-col w-full">   
-            <Card className=" bg-white w-1/5 h-1/2 p-2 mt-2 text-black ">
+        <div className="bg-blue flex flex-col w-1/3 p-2">   
+            <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
             <CardBody>
-              <p>Hi</p>
+              <p>Avatar</p>
             </CardBody>
-            </Card>
+            </Card>           
 
-
-            <Card className=" bg-white w-1/5 h-1/2 p-2 mt-2 text-black ">
+            <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
             <CardBody>
-              <p>Hi</p>
+              <p>Social Links</p>
+            </CardBody>
+            </Card>   
+        </div>
+
+    <div className="bg-black flex flex-col w-full">
+
+          <div className="flex items-center justify-center m-2 bg-black w-full h-1/2 p-2">  
+
+            <Card className=" bg-slate-400 w-full h-full p-2 m-2 text-black ">
+            <CardBody>
+              <p>Names</p>
             </CardBody>
             </Card>
             
-            <Card className=" bg-white w-full h-1/2 p-2 mt-2 text-black ">
+          </div>
+            
+
+          <div className="bg-gray flex flex-row justify-center h-1/2 w-full p-2 m-2">  
+
+            <Card className=" bg-slate-400 w-1/2 h-full  m-2 mt-0 marker:float-left text-black ">
             <CardBody>
-              <p>Hi</p>
+              <p>example 1</p>
             </CardBody>
             </Card>
-        
+
+            <Card className=" bg-slate-400 w-1/2 h-full  m-2 mt-0 text-black ">
+            <CardBody>
+              <p>example 2</p>
+            </CardBody>
+            </Card>
 
           </div>
+    </div>        
+        
+
       </div>
     
     </main>

@@ -5,6 +5,8 @@ import {
   CardHeader,
 } from "@nextui-org/react";
 
+import React from "react";
+
 import { UserIcon } from "@heroicons/react/24/outline";
 
 // User Profile fetch. Show user PFP, and bio below. Also show age, as well as account tags

@@ -7,14 +7,14 @@ import UserProfile from "./UserProfileDash";
 
 export default function Body() {
   return (
-    <div className="flex-col flex w-full">
+    <div className="flex-col flex w-full bg-slate-600">
       <div className="flex flex-row w-full h-3/5">
-        <div className="flex flex-col w-5/6 h-full bg-amber-300">
+        <div className="flex flex-col w-5/6 h-full  ml-10">
           <QuickAction />
           <Mentors />
         </div>
 
-        <div className="h-full w-2/3 bg-blue-300">
+        <div className="h-full w-2/3 ">
           <UserProfile />
         </div>
       </div>

@@ -3,6 +3,7 @@ import {
   Card,
   CardBody,
   CardHeader,
+  Divider,
 } from "@nextui-org/react";
 
 import { UserIcon } from "@heroicons/react/24/outline";
@@ -17,8 +18,18 @@ export default function UserProfile() {
           Welcome User
           <p></p>
         </CardHeader>
+        <Divider className="mx-4" />
         <CardBody>
-          <h1>Profile</h1>
+          <h1 className=" font-bold">Profile</h1>
+          <p className="text-small px-2">
+            Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Ipsum
+            accusantium quaerat vero beatae velit
+            necessitatibus harum voluptatem quas
+            culpa! Eveniet deleniti illo natus,
+            commodi perferendis eum omnis ex
+            adipisci saepe.
+          </p>
         </CardBody>
       </Card>
     </div>

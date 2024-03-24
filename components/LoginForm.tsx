@@ -1,21 +1,39 @@
 "use client";
 
 import React from "react";
-import "./Login.css";
+
 export default function LoginForm() {
   return (
-    <form action="/login" method="post">
-      <h2>Login Page</h2>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input type="text" id="username" name="username" required></input>
+    <form action="/login" method="post" className="login-form">
+      <h2 className="form-title font-bold">Login Page</h2>
+      <div className="form-group">
+        <label htmlFor="username" className="form-label">
+          Username:
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          className="form-input"
+          required
+        />
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" required></input>
+      <div className="form-group">
+        <label htmlFor="password" className="form-label">
+          Password:
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          className="form-input"
+          required
+        />
       </div>
-      <div>
-        <button type="submit">Login</button>
+      <div className="form-actions">
+        <button type="submit" className="submit-button">
+          Login
+        </button>
       </div>
     </form>
   );

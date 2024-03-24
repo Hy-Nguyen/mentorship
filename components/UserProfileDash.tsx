@@ -12,6 +12,9 @@ import { UserIcon } from "@heroicons/react/24/outline";
 export default function UserProfile() {
   return (
     <div className="flex items-center justify-center h-full  ">
+      <div>
+        <h2 className="text-black">Profile</h2>
+      </div>
       <Card className=" mx-10 w-full ">
         <CardHeader className=" justify-between">
           <Avatar name="User" size="lg" />

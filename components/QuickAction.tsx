@@ -21,7 +21,7 @@ export default function QuickAction() {
   return (
     <div className="flex flex-col items-center justify-center h-1/2 w-11/12 ">
       <div className=" w-full">
-        <h1 className="font-bold text-xl ">
+        <h1 className="font-bold text-xl text-black">
           Quick Actions
         </h1>
       </div>

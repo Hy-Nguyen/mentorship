@@ -22,13 +22,13 @@ export default function App() {
 
         <div className="flex flex-wrap justify-center">
           {/* RESUME CARD */}
-          <Card className="w-1/3 mt-2 h-[75vh] border-4 border-red-500 p-0 bg-yellow-200 flex flex-col justify-center items-center">
+          <Card className="w-1/3 m-2 h-[75vh] p-0 bg-slate-400 flex flex-col justify-center items-center">
             {/* HEADER */}
-            <CardHeader className="w-11/12 m-4 border-4 border-green-500 p-0 rounded-none">
+            <CardHeader className="w-11/12 m-4  p-0 rounded-none">
               <img src="/sampleResume.png" alt="Preview of Transcript" />
             </CardHeader>
             {/* BODY */}
-            <CardFooter className="w-auto h-100% my-2 border-4 border-blue-500 p-0 flex justify-center items-center rounded-none">
+            <CardFooter className="w-auto h-100%  p-0 flex justify-center items-center rounded-none">
               <div>
                 <Button color="primary" variant="solid" size="lg">
                   Preview Resume
@@ -38,13 +38,13 @@ export default function App() {
           </Card>
 
           {/* TRANSCRIPT CARD */}
-          <Card className="w-1/3 mt-2 h-[75vh] border-4 border-red-500 p-0 bg-yellow-200 flex flex-col justify-center items-center">
+          <Card className="w-1/3 m-2 h-[75vh] p-0 bg-slate-400 flex flex-col justify-center items-center">
             {/* HEADER */}
-            <CardHeader className="w-11/12 m-4 border-4 border-green-500 p-0 rounded-none">
+            <CardHeader className="w-11/12 m-4  p-0 rounded-none">
               <img src="/sampleResume.png" alt="Preview of Transcript" />
             </CardHeader>
             {/* BODY */}
-            <CardFooter className="w-auto h-100% my-2 border-4 border-blue-500 p-0 flex justify-center items-center rounded-none">
+            <CardFooter className="w-auto h-100% p-0 flex justify-center items-center rounded-none">
               <div>
                 <Button color="primary" variant="solid" size="lg">
                   Preview Transcript

@@ -28,12 +28,10 @@ export default function NavBar() {
       <Navbar
         shouldHideOnScroll
         maxWidth="full"
-        className="bg-white"
+        className="dark shadow-slate-300 shadow-lg"
       >
         <NavbarBrand>
-          <p className="font-bold text-black">
-            Dream Team
-          </p>
+          <p className="font-bold ">Dream Team</p>
         </NavbarBrand>
         <NavbarContent
           className="hidden sm:flex gap-4"

@@ -50,7 +50,7 @@ export default function SideBarContent() {
   };
   return (
     <div className="">
-      <div className="pt-6 flex flex-col items-center">
+      <div className="pt-6 flex flex-col items-center space-y-5">
         {Object.values(navObj).map((item, i) => (
           <div key={i} className=" w-56">
             <SideNavItem

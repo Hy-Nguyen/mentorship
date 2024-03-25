@@ -56,6 +56,28 @@ export default function Profile() {
           <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
             <CardBody>
               <p>Social Links</p>
+              <hr />
+
+                      <div className="flex flex-row p-2 m-2">
+                        <div className="w-1/3 text-xs font-bold">
+                          <h6>Website</h6>
+                        </div>
+                        <div className="w-1/2 text-xs">
+                          randomURL.com
+                        </div>
+                      </div>
+
+                      <hr />
+
+                      <div className="flex flex-row p-2 m-2">
+                        <div className="w-1/3 text-xs font-bold">
+                          <h6>Github</h6>
+                        </div>
+                        <div className="w-1/2 text-xs">
+                          Johndoe123
+                        </div>
+
+                      </div>
             </CardBody>
           </Card>
         </div>

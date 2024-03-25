@@ -15,15 +15,20 @@ export default function Mentors() {
     "Yousef A.",
   ];
   return (
-    <div className="flex flex-row items-center justify-center w-11/12 ">
+    <div className="flex flex-col items-start justify-center w-11/12 ">
+      <div>
+        <h1 className="text-xl font-bold text-black">
+          My Mentees
+        </h1>
+      </div>
+
       <Card
-        className=" bg-gray-300 = w-full h-full "
+        className="  mt-4 w-full h-full "
         isBlurred
       >
-        <CardBody>
-          <h1>My Mentees</h1>
+        <CardBody className="">
           <AvatarGroup
-            className=" dark text-start flex justify-start"
+            className=" dark text-start flex justify-start "
             total={students.length}
           >
             {students.map((student, i) => (

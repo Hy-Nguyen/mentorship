@@ -9,10 +9,10 @@ export default function SideBar() {
   return (
     <>
       <div className="bg-slate-400 w-1/5 min-h-screen p-2 hidden lg:block md:w-1/6">
-        <Welcome />
+        {/* <Welcome />
         <Spacer y={5} />
         <Divider className="" />
-        <Spacer y={5} />
+        <Spacer y={5} /> */}
         <SideBarContent />
       </div>
     </>

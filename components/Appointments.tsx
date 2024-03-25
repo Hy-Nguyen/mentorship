@@ -10,6 +10,7 @@ import {
   TableColumn,
   getKeyValue,
   Link,
+  Divider,
 } from "@nextui-org/react";
 
 export default function Appointments() {
@@ -89,8 +90,14 @@ export default function Appointments() {
     },
   ];
   return (
-    <div className="flex justify-center w-2/3 px-4 pt-4">
-      <Table className="text-black">
+    <div className="flex flex-col items-start justify-start w-2/3 px-4 pt-4">
+      <div>
+        <h1 className="text-xl text-black font-bold">
+          Appointments
+        </h1>
+      </div>
+
+      <Table className="text-black mt-4">
         <TableHeader columns={columns}>
           {(column) => (
             <TableColumn key={column.key}>

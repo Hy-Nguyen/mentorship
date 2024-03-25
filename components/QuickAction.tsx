@@ -26,13 +26,9 @@ export default function QuickAction() {
         </h1>
       </div>
 
-      <div className="flex flex-row w-full mt-4 ">
+      <div className="flex flex-row w-full mt-4 space-x-2">
         {actionList.map((action, i) => (
-          <Card
-            className="mr-2 max-w-1/3"
-            key={i}
-            isBlurred
-          >
+          <Card className=" " key={i} isBlurred>
             <CardBody>{action.content}</CardBody>
           </Card>
         ))}

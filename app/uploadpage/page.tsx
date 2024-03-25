@@ -20,7 +20,7 @@ export default function App() {
       <div className="flex">
         <SideBar />
 
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center bg-gray-50">
           {/* RESUME CARD */}
           <Card className="w-1/3 m-2 h-[75vh] p-0 bg-slate-400 flex flex-col justify-center items-center">
             {/* HEADER */}

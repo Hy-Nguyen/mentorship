@@ -17,7 +17,7 @@ export default function Profile() {
         <div className="bg-blue flex flex-col w-1/3 p-2 justify-center items-center">
           <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
             <CardBody>
-              <div className="relative flex  items-center justify-center size-[175px] overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+              <div className="relative flex  items-center justify-center size-[160px] overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                 <span className="font-medium text-gray-600 dark:text-gray-300">
                   JD
                 </span>

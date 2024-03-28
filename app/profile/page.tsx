@@ -7,6 +7,7 @@ import {
   Avatar,
   Card,
   CardBody,
+  Divider,
 } from "@nextui-org/react";
 
 export default function Profile() {
@@ -15,14 +16,9 @@ export default function Profile() {
       <div className="flex">
         <SideBar />
 
-        <div className="bg-blue flex flex-col w-1/3 p-2 justify-center items-center">
+        <div className="bg-blue flex flex-col h-full w-1/3 p-2 justify-center items-center">
           <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
             <CardBody className="flex flex-col items-center">
-              {/* <div className="relative flex  items-center justify-center size-[160px] overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                <span className="font-medium text-gray-600 dark:text-gray-300">
-                  JD
-                </span>
-              </div> */}
 
               <Avatar className="w-48 h-48 text-large" name="JD"/> 
 
@@ -56,13 +52,12 @@ export default function Profile() {
             </CardBody>
           </Card>
 
-          <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
+          <Card className=" bg-slate-400 w-full h-auto p-2 m-2 text-black flex justify-center">
             <CardBody>
-              <p>Social Links</p>
-              <hr />
 
-                      <div className="flex flex-row p-2 m-2">
-                        <div className="w-1/3 text-xs font-bold">
+
+                      <div className="flex flex-row justify-center w-full py-2 my-2">
+                        <div className="w-1/2 text-s font-bold">
                           <h6>Website</h6>
                         </div>
                         <div className="w-1/2 text-xs">
@@ -70,38 +65,73 @@ export default function Profile() {
                         </div>
                       </div>
 
-                      <hr />
+    
 
-                      <div className="flex flex-row p-2 m-2">
-                        <div className="w-1/3 text-xs font-bold">
+                      {/* <hr /> */}
+                      <Divider />
+
+
+                      <div className="flex flex-row justify-center w-full py-2 my-2">
+                        <div className="w-1/2 text-s font-bold">
+                          <h6>Email</h6>
+                        </div>
+                        <div className="w-1/2 text-xs">
+                          Johndoe123@URL.com
+                        </div>
+                      </div>
+
+
+
+                        <Divider />
+
+                      <div className="flex flex-row justify-center w-full py-2 my-2">
+                        <div className="w-1/2 text-s font-bold">
                           <h6>Github</h6>
                         </div>
                         <div className="w-1/2 text-xs">
                           Johndoe123
                         </div>
-
                       </div>
 
-                      <div className="flex flex-row p-2 m-2">
-                        <div className="w-1/3 text-xs font-bold">
-                          <h6>Github</h6>
+                      <Divider />
+
+
+                      <div className="flex flex-row justify-center w-full py-2 my-2">
+                        <div className="w-1/2 text-s font-bold">
+                          <h6>LinkedIn</h6> 
                         </div>
                         <div className="w-1/2 text-xs">
                           Johndoe123
                         </div>
-
                       </div>
 
-                      <div className="flex flex-row p-2 m-2">
-                        <div className="w-1/3 text-xs font-bold">
-                          <h6>Github</h6>
+
+                      <Divider />
+
+                      <div className="flex flex-row justify-center w-full py-2 my-2">
+                        <div className="w-1/2 text-s font-bold">
+                          <h6>Handshake</h6>
                         </div>
                         <div className="w-1/2 text-xs">
                           Johndoe123
                         </div>
-
                       </div>
+
+
+
+                        <Divider />
+
+                        <div className="flex flex-row justify-center w-full py-2 my-2">
+                        <div className="w-1/2 text-s font-bold">
+                          <h6>Twitter</h6> 
+                        </div>
+                        <div className="w-1/2 text-xs">
+                          Johndoe123
+                        </div>
+                      </div>
+
             </CardBody>
+
           </Card>
         </div>
 
@@ -121,7 +151,7 @@ export default function Profile() {
                         </div>
                       </div>
 
-                      <hr />
+                      <Divider />
 
                       <div className="flex flex-row p-2 m-2">
                         <div className="w-1/3 text-xl font-bold">
@@ -132,7 +162,7 @@ export default function Profile() {
                         </div>
                       </div>
 
-                      <hr />
+                      <Divider />
 
                       <div className="flex flex-row p-2 m-2">
                         <div className="w-1/3 text-xl font-bold">
@@ -143,7 +173,7 @@ export default function Profile() {
                         </div>
                       </div>
 
-                      <hr />
+                      <Divider />
 
                       <div className="flex flex-row p-2 m-2">
                         <div className="w-1/3 text-xl font-bold">
@@ -154,7 +184,7 @@ export default function Profile() {
                         </div>
                       </div>
 
-                      <hr />
+                      <Divider />
 
                       <div className="flex flex-row p-2 m-2">
                         <div className="w-1/3 text-xl font-bold">

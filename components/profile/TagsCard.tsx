@@ -7,7 +7,7 @@ import {
 
 export default function Tags() {
   return (
-    <div className="flex-col flex w-1/3 space-y-4">
+    <div className="flex-col flex w-3/5 space-y-4">
       <div>
         <h1 className="text-black text-xl font-bold ">
           Your Tags

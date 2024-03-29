@@ -42,7 +42,7 @@ export default function Profile() {
     <div className="flex bg-white">
       <SideBar />
       {/* Body */}
-      <div className=" flex flex-col w-full ">
+      {/* <div className=" flex flex-col w-full ">
         <div className="flex flex-row w-full h-1/2 p-4 space-x-8">
           <ProfileCard user={user} />
           <ProfileInfo user={user} />
@@ -52,6 +52,14 @@ export default function Profile() {
           <Tags />
           <Tags />
         </div>
+      </div> */}
+      <div className=" flex flex-col w-full items-center pt-10 space-y-2">
+        <ProfileCard user={user} />
+        <ProfileInfo user={user} />
+
+        <SocialCard user={user} />
+        <Tags />
+        <Tags />
       </div>
     </div>
   );

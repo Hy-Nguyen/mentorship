@@ -12,7 +12,7 @@ export default function ProfileCard(props: any) {
   const user = props.user;
   return (
     <>
-      <Card className=" bg-gray-50 w-1/2  text-black ">
+      <Card className=" bg-gray-50 w-3/5  text-black ">
         <CardBody className="flex flex-col justify-center items-center">
           <Avatar
             className="w-32 h-32 text-large mb-10"

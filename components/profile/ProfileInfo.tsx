@@ -25,14 +25,14 @@ export default function ProfileInfo(props: any) {
   }
 
   return (
-    <div className="flex-col flex w-1/2 space-y-4">
+    <div className="flex-col flex w-3/5 space-y-4">
       <h1 className="text-black text-xl font-bold pt-4">
         Your Info
       </h1>
       <Card className=" bg-gray-50 h-full  text-black ">
         {!editView ? (
           <CardBody className="flex justify-center">
-            <div className="p-10 space-y-3 flex flex-col ">
+            <div className="p-5 space-y-3 flex flex-col ">
               <div className=" flex justify-between items-end">
                 <h1 className="text-lg font-bold">
                   Name:

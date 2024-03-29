@@ -13,23 +13,35 @@ export default function SideBarContent() {
   let iconSize = "w-7 h-7";
 
   let navObj = {
-    Home: { name: "Home", icon: "HomeIcon" },
+    Home: {
+      name: "Home",
+      icon: "HomeIcon",
+      link: "/",
+    },
     Goals: {
       name: "Goals",
       icon: "CheckCircleIcon",
+      link: "/",
     },
-    Inbox: { name: "Inbox", icon: "InboxIcon" },
+    Inbox: {
+      name: "Inbox",
+      icon: "InboxIcon",
+      link: "/",
+    },
     Calendar: {
       name: "Calendar",
       icon: "CalendarDaysIcon",
+      link: "/",
     },
     Profile: {
       name: "Profile",
       icon: "UserCircleIcon",
+      link: "/profile",
     },
     Settings: {
       name: "Settings",
       icon: "Cog6ToothIcon",
+      link: "/",
     },
   };
   const icons = {
@@ -56,6 +68,7 @@ export default function SideBarContent() {
             <SideNavItem
               name={item.name}
               icon={icons[item.icon]}
+              link={item.link}
             />
           </div>
         ))}

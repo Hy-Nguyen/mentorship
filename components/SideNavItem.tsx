@@ -16,13 +16,13 @@ import {
 export default function SideNavItem(props: {
   name: string;
   icon: any;
+  link: string;
 }) {
   return (
     <>
       <Link
         isBlock
-
-        href="#"
+        href={props.link}
         color="foreground"
         className="w-full"
       >

@@ -36,25 +36,7 @@ export default function NavBar() {
         <NavbarContent
           className="hidden sm:flex gap-4"
           justify="center"
-        >
-          {/* {nav.map((item) => (
-            <NavbarItem
-              key={item}
-              isActive={activeItem === item}
-            >
-              <Link
-                onClick={() =>
-                  setActiveItem(item)
-                }
-                href={`/${item.toLowerCase()}`}
-              >
-                <a className="text-black hover:text-gray-900">
-                  {item}
-                </a>
-              </Link>
-            </NavbarItem>
-          ))} */}
-        </NavbarContent>
+        ></NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
             <Link href="#">Login</Link>

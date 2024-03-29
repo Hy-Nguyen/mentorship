@@ -257,9 +257,9 @@ export default function Profile() {
         </div>
 
       </div> 
-  
+    
       ) : ( 
-
+      <form>
         <div className="flex">
         <SideBar />
 
@@ -393,11 +393,8 @@ export default function Profile() {
 
                         <Card className="w-full my-2">
                       <CardBody>
-                      <button
-                          onClick={() => setEditView(!editView)}
-                        >
-                          Save Changes
-                        </button>
+
+                        <input onClick={() => setEditView(!editView)} type="submit" value="Submit"></input>
                         </CardBody>
                         </Card>
         </div>
@@ -480,7 +477,7 @@ export default function Profile() {
               </CardBody>
             </Card>
           </div>
-
+          
 
 
           <div className="bg-gray flex flex-row justify-center h-1/2 w-full p-2 m-2">
@@ -499,6 +496,7 @@ export default function Profile() {
         </div>
 
       </div> 
+      </form>
       )
   
           }

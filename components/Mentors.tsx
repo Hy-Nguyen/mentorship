@@ -28,7 +28,7 @@ export default function Mentors() {
       >
         <CardBody className="">
           <AvatarGroup
-            className=" dark text-start flex justify-start "
+            className=" dark text-start flex justify-start pl-4 "
             total={students.length}
           >
             {students.map((student, i) => (

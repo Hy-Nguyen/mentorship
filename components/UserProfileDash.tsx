@@ -24,7 +24,7 @@ export default function UserProfile() {
         <CardHeader className=" justify-between">
           <Avatar name="User" size="lg" />
           Welcome {userName}
-          <p></p>
+          <p>{/** Spacer */}</p>
         </CardHeader>
         <Divider className="mx-4" />
         <CardBody>

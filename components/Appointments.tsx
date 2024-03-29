@@ -13,7 +13,33 @@ import {
   Divider,
 } from "@nextui-org/react";
 
+import { createClient } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
+
 export default function Appointments() {
+  const supabase = createClient();
+  const [appointments, setAppointments] =
+    useState([]);
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      const { data: appointmentList, error } =
+        await supabase
+          .from("Appointments")
+          .select();
+
+      if (error) console.log("Error: ", error);
+      else
+        setAppointments(
+          Array.from(appointmentList)
+        );
+    };
+
+    fetchAppointments();
+  }, []);
+
+  console.log(appointments);
+
   const userAppoint = [
     {
       key: "1",
@@ -70,6 +96,28 @@ export default function Appointments() {
         </Link>
       ),
     },
+    {
+      key: "6",
+      date: "Mar 23, 8:15PM",
+      desc: "Mentorship: Course Layout",
+      mentee: "Hy N.",
+      meetingID: (
+        <Link isBlock href="/" color="foreground">
+          Zoom
+        </Link>
+      ),
+    },
+    {
+      key: "7",
+      date: "Mar 23, 8:15PM",
+      desc: "Mentorship: Course Layout",
+      mentee: "Cris P.",
+      meetingID: (
+        <Link isBlock href="/" color="foreground">
+          Zoom
+        </Link>
+      ),
+    },
   ];
   const columns = [
     {
@@ -97,7 +145,10 @@ export default function Appointments() {
         </h1>
       </div>
 
-      <Table className="text-black mt-4">
+      <Table
+        className="text-black mt-4"
+        selectionMode="single"
+      >
         <TableHeader columns={columns}>
           {(column) => (
             <TableColumn key={column.key}>

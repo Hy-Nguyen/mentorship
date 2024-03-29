@@ -12,7 +12,9 @@ import {
   Card,
   CardBody,
   Divider,
-  Input
+  Input,
+  Checkbox,
+  CheckboxGroup
 } from "@nextui-org/react";
 
 export default function Profile() {
@@ -31,10 +33,10 @@ export default function Profile() {
           <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
             <CardBody className="flex flex-col items-center">
 
-              <Avatar className="w-48 h-48 text-large" name="JD"/> 
+              <Avatar isBordered color="default" className="w-48 h-48 text-large my-2" name="JD"/> 
 
-              <h1 className="flex justify-center">
-                FirstName LastName</h1>
+              <h1 className="flex justify-center text-2xl font-bold">
+                John Doe</h1>
               <h1 className="flex justify-center">Organization</h1>
 
               <p className="flex justify-center">
@@ -229,7 +231,6 @@ export default function Profile() {
                         </div>
                       </div>
 
-                      <Divider />
 
                       <div className="row">
                         
@@ -244,7 +245,18 @@ export default function Profile() {
           <div className="bg-gray flex flex-row justify-center h-1/2 w-full p-2 m-2">
             <Card className=" bg-slate-400 w-1/2 h-full  m-2 mt-0 marker:float-left text-black ">
               <CardBody>
-                <p>Tags</p>
+              <h1>Select Mentor tags:</h1>
+
+              <CheckboxGroup className="text-black"
+                defaultValue={["professional", "academic"]}
+              >
+                <Checkbox value="professional">Professional</Checkbox>
+                <Checkbox value="academic">Academic</Checkbox>
+                <Checkbox value="social">Social</Checkbox>
+                <Checkbox value="mental-health">Mental Health</Checkbox>
+                <Checkbox value="physical Health">Physical Health</Checkbox>
+                <Checkbox value="other">Other</Checkbox>
+              </CheckboxGroup>
               </CardBody>
             </Card>
 
@@ -268,10 +280,10 @@ export default function Profile() {
           <Card className=" bg-slate-400 w-full h-1/2 p-2 m-2 text-black ">
             <CardBody className="flex flex-col items-center">
 
-              <Avatar className="w-48 h-48 text-large" name="JD"/> 
+            <Avatar isBordered color="default" className="w-48 h-48 text-large my-2" name="JD"/> 
 
-              <h1 className="flex justify-center">
-                FirstName LastName
+              <h1 className="flex justify-center text-2xl font-bold">
+                John Doe
               </h1>
               <h1 className="flex justify-center">Organization</h1>
               <p className="flex justify-center">
@@ -483,7 +495,17 @@ export default function Profile() {
           <div className="bg-gray flex flex-row justify-center h-1/2 w-full p-2 m-2">
             <Card className=" bg-slate-400 w-1/2 h-full  m-2 mt-0 marker:float-left text-black ">
               <CardBody>
-                <p>Tags</p>
+                 <CheckboxGroup
+                label="Select Mentor tags"
+                defaultValue={["professional", "academic"]}
+              >
+                <Checkbox value="professional">Professional</Checkbox>
+                <Checkbox value="academic">Academic</Checkbox>
+                <Checkbox value="social">Social</Checkbox>
+                <Checkbox value="mental-health">Mental Health</Checkbox>
+                <Checkbox value="physical Health">Physical Health</Checkbox>
+                <Checkbox value="other">Other</Checkbox>
+              </CheckboxGroup>
               </CardBody>
             </Card>
 

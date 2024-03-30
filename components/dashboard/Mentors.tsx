@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardBody,
@@ -5,8 +6,32 @@ import {
   AvatarGroup,
   Tooltip,
 } from "@nextui-org/react";
+import { createClient } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
 
 export default function Mentors() {
+  const supabase = createClient();
+
+  const [mentees, setMentees] = useState<
+    string[]
+  >([]);
+
+  useEffect(() => {
+    const fetchMentees = async () => {
+      const { data: menteeList, error } =
+        await supabase
+          .from("mentorship")
+          .select("mentee")
+          .eq("mentorid", 49);
+
+      if (error) console.log("Error: ", error);
+      else setMentees(Array.from(menteeList[0].mentee));
+
+      console.log(menteeList[0].mentee);
+    };
+
+    fetchMentees();
+  }, []);
   const students = [
     "Hy N.",
     "Cris P.",
@@ -28,10 +53,10 @@ export default function Mentors() {
       >
         <CardBody className="">
           <AvatarGroup
-            className=" dark text-start flex justify-start "
-            total={students.length}
+            className=" dark text-start flex justify-start pl-4 "
+            total={mentees.length}
           >
-            {students.map((student, i) => (
+            {mentees.map((student, i) => (
               <Tooltip
                 key={i}
                 content={student}

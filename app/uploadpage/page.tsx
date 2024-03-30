@@ -15,45 +15,58 @@ import {
 // ================== COLORS AND BORDERS FOR LEARNING PURPOSES ===================
 
 export default function App() {
-  return (
-    <>
-      <div className="flex">
-        <SideBar />
+   return (
+     <>
+       <div className="flex w-full">
+         <SideBar />
 
-        <div className="flex flex-wrap justify-center bg-gray-50">
-          {/* RESUME CARD */}
-          <Card className="w-1/3 m-2 h-[75vh] p-0 bg-slate-400 flex flex-col justify-center items-center">
-            {/* HEADER */}
-            <CardHeader className="w-11/12 m-4  p-0 rounded-none">
-              <img src="/sampleResume.png" alt="Preview of Transcript" />
-            </CardHeader>
-            {/* BODY */}
-            <CardFooter className="w-auto h-100%  p-0 flex justify-center items-center rounded-none">
-              <div>
-                <Button color="primary" variant="solid" size="lg">
-                  Preview Resume
-                </Button>
-              </div>
-            </CardFooter>
-          </Card>
+         <div className="border-3 border-red-300 flex-col flex w-full bg-gray-50  ">
+           <div className="border-3 border-blue-300 flex flex-row w-full h-3/5">
 
-          {/* TRANSCRIPT CARD */}
-          <Card className="w-1/3 m-2 h-[75vh] p-0 bg-slate-400 flex flex-col justify-center items-center">
-            {/* HEADER */}
-            <CardHeader className="w-11/12 m-4  p-0 rounded-none">
-              <img src="/sampleResume.png" alt="Preview of Transcript" />
-            </CardHeader>
-            {/* BODY */}
-            <CardFooter className="w-auto h-100% p-0 flex justify-center items-center rounded-none">
-              <div>
-                <Button color="primary" variant="solid" size="lg">
-                  Preview Transcript
-                </Button>
-              </div>
-            </CardFooter>
-          </Card>
-        </div>
-      </div>
-    </>
-  );
-}
+             <Card className="w-2/12 h-2/3 ml-4 mt-4">
+               <CardBody className="w-auto h=100% p-0 bg-slate-200 flex justify-center items-center">
+                 <img
+                   src="/sampleResume.png"
+                   alt="Preview of Transcript"
+                   style={{
+                     width: "80%",
+                     height: "90%",
+                     borderRadius: "10px",
+                   }}
+                 />
+               </CardBody>
+               <CardFooter className=" w-auto h-100% p-0 my-2 flex justify-center items-center rounded-none">
+                 <div>
+                   <Button color="primary" variant="solid" size="lg">
+                     Preview Resume
+                   </Button>
+                 </div>
+               </CardFooter>
+             </Card>
+
+             <Card className="w-2/12 h-2/3 ml-4 mt-4">
+               <CardBody className="w-auto h=100% p-0 bg-slate-200 flex justify-center items-center">
+                 <img
+                   src="/sampleResume.png"
+                   alt="Preview of Transcript"
+                   style={{
+                     width: "80%",
+                     height: "90%",
+                     borderRadius: "10px",
+                   }}
+                 />
+               </CardBody>
+               <CardFooter className=" w-auto h-100% p-0 my-2 flex justify-center items-center rounded-none">
+                 <div>
+                   <Button color="primary" variant="solid" size="lg">
+                     Preview Transcript
+                   </Button>
+                 </div>
+               </CardFooter>
+             </Card>
+           </div>
+         </div>
+       </div>
+     </>
+   );
+ }

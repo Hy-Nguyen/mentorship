@@ -11,7 +11,6 @@ import {
 } from "@nextui-org/react";
 
 import { useState } from "react";
-import { SearchIcon } from "./SeachIcon";
 
 export default function NavBar() {
   let nav = [
@@ -56,7 +55,7 @@ export default function NavBar() {
           ))} */}
         </NavbarContent>
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
+          {/* <NavbarItem className="hidden lg:flex">
             <Link href="#">Login</Link>
           </NavbarItem>
           <NavbarItem>
@@ -68,7 +67,7 @@ export default function NavBar() {
             >
               Sign Up
             </Button>
-          </NavbarItem>
+          </NavbarItem> */}
         </NavbarContent>
       </Navbar>
     </>

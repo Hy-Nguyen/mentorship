@@ -1,4 +1,4 @@
-import SideBar from "../../components/SideBar";
+import SideBar from "../../components/sidebar/SideBar";
 
 import ProfileCard from "@/components/profile/ProfileCard";
 import SocialCard from "@/components/profile/SocialCard";

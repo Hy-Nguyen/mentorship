@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardBody,
@@ -6,39 +5,21 @@ import {
   AvatarGroup,
   Tooltip,
 } from "@nextui-org/react";
-import { createClient } from "@/utils/supabase/client";
-import { useEffect, useState } from "react";
 
-export default function Mentors() {
-  const supabase = createClient();
+export default async function Mentors() {
+  const id = 49;
+  const response = await fetch(
+    `http://localhost:3000/api/menteeList/${id}`
+  );
+  const mentees = await response.json();
 
-  const [mentees, setMentees] = useState<
-    string[]
-  >([]);
-
-  useEffect(() => {
-    const fetchMentees = async () => {
-      const { data: menteeList, error } =
-        await supabase
-          .from("mentorship")
-          .select("mentee")
-          .eq("mentorid", 49);
-
-      if (error) console.log("Error: ", error);
-      else setMentees(Array.from(menteeList[0].mentee));
-
-      console.log(menteeList[0].mentee);
-    };
-
-    fetchMentees();
-  }, []);
-  const students = [
-    "Hy N.",
-    "Cris P.",
-    "Luke F.",
-    "Miguel U.",
-    "Yousef A.",
-  ];
+  // const mentees = [
+  //   "Hy N.",
+  //   "Cris P.",
+  //   "Luke F.",
+  //   "Miguel U.",
+  //   "Yousef A.",
+  // ];
   return (
     <div className="flex flex-col items-start justify-center w-11/12 ">
       <div>

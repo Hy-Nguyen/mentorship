@@ -1,27 +1,29 @@
 "use client";
 
 import {
+  Button,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
   Input,
+  Radio,
+  RadioGroup,
 } from "@nextui-org/react";
 
 import { useState } from "react";
-import { SearchIcon } from "./SeachIcon";
 
 export default function NavBar() {
-  let nav = [
-    "",
-    "About",
-    "Services",
-    "Contact",
-    "Login",
-  ];
-  const [activeItem, setActiveItem] = useState();
+  const { isOpen, onOpen, onOpenChange } =
+    useDisclosure();
+
+  const [logIn, setLogIn] = useState(true);
 
   return (
     <>
@@ -36,41 +38,148 @@ export default function NavBar() {
         <NavbarContent
           className="hidden sm:flex gap-4"
           justify="center"
-        >
-          {/* {nav.map((item) => (
-            <NavbarItem
-              key={item}
-              isActive={activeItem === item}
-            >
-              <Link
-                onClick={() =>
-                  setActiveItem(item)
-                }
-                href={`/${item.toLowerCase()}`}
-              >
-                <a className="text-black hover:text-gray-900">
-                  {item}
-                </a>
-              </Link>
-            </NavbarItem>
-          ))} */}
-        </NavbarContent>
+        ></NavbarContent>
+
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
-          </NavbarItem>
           <NavbarItem>
-            <Button
-              as={Link}
-              color="primary"
-              href="#"
-              variant="flat"
-            >
-              Sign Up
+            <Button onPress={onOpen}>
+              Log In / Sign Up
             </Button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className=""
+        backdrop="blur"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              {logIn ? (
+                <form>
+                  <ModalHeader className="flex flex-col gap-1 text-black">
+                    Log In
+                  </ModalHeader>
+                  <ModalHeader className="flex flex-col gap-1">
+                    <div className="flex w-full space-x-2 justify-center">
+                      <Button
+                        className="w-full"
+                        onPress={() =>
+                          setLogIn(true)
+                        }
+                      >
+                        Log In
+                      </Button>
+                      <Button
+                        className="w-full"
+                        onPress={() =>
+                          setLogIn(false)
+                        }
+                      >
+                        Sign Up
+                      </Button>
+                    </div>
+                  </ModalHeader>
+                  <ModalBody>
+                    <div className="space-y-3">
+                      <Input label="Email" />
+                      <Input
+                        label="Password"
+                        type="password"
+                      />
+                    </div>
+                  </ModalBody>
+                  <ModalFooter className=" justify-between">
+                    <Button
+                      color="danger"
+                      variant="light"
+                      onPress={onClose}
+                    >
+                      Close
+                    </Button>
+                    <Button
+                      color="primary"
+                      onPress={onClose}
+                    >
+                      Log In
+                    </Button>
+                  </ModalFooter>
+                </form>
+              ) : (
+                <form>
+                  <ModalHeader className="flex flex-col gap-1 text-black">
+                    Sign Up
+                  </ModalHeader>
+                  <ModalHeader className="flex flex-col gap-1">
+                    <div className="flex w-full space-x-2 justify-center">
+                      <Button
+                        className="w-full"
+                        onPress={() =>
+                          setLogIn(true)
+                        }
+                      >
+                        Log In
+                      </Button>
+                      <Button
+                        className="w-full"
+                        onPress={() =>
+                          setLogIn(false)
+                        }
+                      >
+                        Sign Up
+                      </Button>
+                    </div>
+                  </ModalHeader>
+                  <ModalBody>
+                    <Input label="First Name" />
+                    <Input label="Last Name" />
+                    <Input label="Email" />
+                    <Input
+                      label="Password"
+                      type="password"
+                    />
+                    <Input
+                      label="Confirm Password"
+                      type="password"
+                    />
+                    <RadioGroup
+                      label="Mentor or Mentee"
+                      orientation="horizontal"
+                      className=""
+                    >
+                      <div className="flex w-full space-x-10 justify-center">
+                        <Radio value="Mentor">
+                          Mentor
+                        </Radio>
+                        <Radio value="Mentee">
+                          Mentee
+                        </Radio>
+                      </div>
+                    </RadioGroup>
+                  </ModalBody>
+                  <ModalFooter className="justify-between">
+                    <Button
+                      color="danger"
+                      variant="light"
+                      onPress={onClose}
+                    >
+                      Close
+                    </Button>
+                    <Button
+                      color="primary"
+                      onPress={onClose}
+                    >
+                      Sign Up
+                    </Button>
+                  </ModalFooter>
+                </form>
+              )}
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </>
   );
 }

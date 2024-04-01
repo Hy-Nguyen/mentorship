@@ -25,6 +25,23 @@ export default function NavBar() {
 
   const [logIn, setLogIn] = useState(true);
 
+  const [logInUser, setLogInUser] = useState("");
+  const [logInPassword, setLogInPassword] =
+    useState("");
+
+  const [fName, setFirstName] = useState("");
+  const [lName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] =
+    useState("");
+
+  async function handleLogIn(e: React.FormEvent) {
+    e.preventDefault();
+    alert(`${logInUser}, ${logInPassword}`);
+    await fetch("/api/login")
+  }
+
   return (
     <>
       <Navbar
@@ -58,7 +75,7 @@ export default function NavBar() {
           {(onClose) => (
             <>
               {logIn ? (
-                <form>
+                <form onSubmit={handleLogIn}>
                   <ModalHeader className="flex flex-col gap-1 text-black">
                     Log In
                   </ModalHeader>
@@ -84,10 +101,21 @@ export default function NavBar() {
                   </ModalHeader>
                   <ModalBody>
                     <div className="space-y-3">
-                      <Input label="Email" />
+                      <Input
+                        label="Email"
+                        type="email"
+                        value={logInUser}
+                        onValueChange={
+                          setLogInUser
+                        }
+                      />
                       <Input
                         label="Password"
                         type="password"
+                        value={logInPassword}
+                        onValueChange={
+                          setLogInPassword
+                        }
                       />
                     </div>
                   </ModalBody>
@@ -101,7 +129,8 @@ export default function NavBar() {
                     </Button>
                     <Button
                       color="primary"
-                      onPress={onClose}
+                      // onPress={onClose}
+                      type="submit"
                     >
                       Log In
                     </Button>

@@ -6,7 +6,7 @@ import ProfileInfo from "@/components/profile/ProfileInfo";
 import Tags from "@/components/profile/TagsCard";
 
 export default async function Profile() {
-  const id = 1;
+  const id = 23;
   const response = await fetch(
     `http://localhost:3000/api/profiles/${id}`
   );
@@ -19,7 +19,6 @@ export default async function Profile() {
       <div className=" flex flex-col w-full items-center pt-10 space-y-2">
         <ProfileCard user={user} />
         <ProfileInfo user={user} />
-
         <SocialCard user={user} />
         <Tags />
         <Tags />

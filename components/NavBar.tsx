@@ -28,7 +28,7 @@ export default function NavBar() {
       <Navbar
         shouldHideOnScroll
         maxWidth="full"
-        className="dark shadow-slate-300 shadow-lg"
+        className="dark "
       >
         <NavbarBrand>
           <p className="font-bold ">Dream Team</p>

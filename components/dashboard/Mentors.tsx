@@ -6,14 +6,20 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 
-export default function Mentors() {
-  const students = [
-    "Hy N.",
-    "Cris P.",
-    "Luke F.",
-    "Miguel U.",
-    "Yousef A.",
-  ];
+export default async function Mentors() {
+  const id = 49;
+  const response = await fetch(
+    `http://localhost:3000/api/menteeList/${id}`
+  );
+  const mentees = await response.json();
+
+  // const mentees = [
+  //   "Hy N.",
+  //   "Cris P.",
+  //   "Luke F.",
+  //   "Miguel U.",
+  //   "Yousef A.",
+  // ];
   return (
     <div className="flex flex-col items-start justify-center w-11/12 ">
       <div>
@@ -28,10 +34,10 @@ export default function Mentors() {
       >
         <CardBody className="">
           <AvatarGroup
-            className=" dark text-start flex justify-start "
-            total={students.length}
+            className=" dark text-start flex justify-start pl-4 "
+            total={mentees.length}
           >
-            {students.map((student, i) => (
+            {mentees.map((student, i) => (
               <Tooltip
                 key={i}
                 content={student}

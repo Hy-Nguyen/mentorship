@@ -17,6 +17,7 @@ export default function Body() {
         </div>
 
         <div className="flex h-full w-5/6 p-4">
+          {/* https://dribbble.com/shots/17852674-Profile-Card */}
           <UserProfile />
         </div>
       </div>

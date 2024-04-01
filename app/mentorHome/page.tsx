@@ -1,7 +1,7 @@
 import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import SideBar from "@/components/SideBar";
-import Body from "@/components/Body";
+import Body from "@/components/dashboard/Body";
 
 export default function Home() {
   return (

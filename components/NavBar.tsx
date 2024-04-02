@@ -21,6 +21,8 @@ import { useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 
+import { createClient } from "@/utils/supabase/client";
+
 export default function NavBar() {
   const router = useRouter();
   const {
@@ -53,7 +55,13 @@ export default function NavBar() {
   const [confirmPassword, setConfirmPassword] =
     useState("");
 
-  const [type, setType] = useState("");
+  const [validUsername, setValidUsername] =
+    useState(false);
+
+  const [validPassword, setValidPassword] =
+    useState(false);
+
+  const [type, setType] = useState();
 
   function storeUserInfo(
     userID: number,
@@ -127,6 +135,7 @@ export default function NavBar() {
           data.user.UserID,
           data.user.role
         );
+        setLoggedIn(true);
         onClose();
         router.push("/mentorHome");
       } else {
@@ -143,13 +152,51 @@ export default function NavBar() {
     }
   }
 
+  async function validate(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
+    e.preventDefault();
+
+    const supabase = createClient();
+
+    console.log("hi");
+
+    const { data, error } = await supabase
+      .from("Users")
+      .select("*", { count: "exact" })
+      .eq("username", username);
+
+    if (data?.length != 0) {
+      // USERNAME EXISTS
+      setValidUsername(true);
+      return;
+    }
+    if (!validUsername && !validPassword) {
+      await handleSignUp(e);
+    }
+  }
+
+  function validatePassword(password: string) {
+    setPassword(password);
+    if (
+      !(password.length >= 8) ||
+      !/\d/.test(password) ||
+      !/[A-Z]/.test(password) ||
+      !/[a-z]/.test(password)
+    ) {
+      setValidPassword(true);
+    } else {
+      setValidPassword(false);
+    }
+  }
+
   async function handleSignUp(
     e: React.FormEvent<HTMLFormElement>
   ) {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:3000/api/login",
+        "http://localhost:3000/api/signup",
         {
           method: "POST",
           headers: {
@@ -160,10 +207,24 @@ export default function NavBar() {
             username: username,
             email: email,
             password: password,
-            role: type,
+            role: type?.anchorKey,
           }),
         }
       );
+
+      if (response.ok) {
+        setFirstName("");
+        setLastName("");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setType(undefined);
+        onClose();
+        alert("Account Created! Please Login");
+        setLogIn(true);
+        onOpen();
+      }
     } catch (e) {
       console.log(e);
     }
@@ -191,9 +252,11 @@ export default function NavBar() {
                 Log In / Sign Up
               </Button>
             ) : (
-              <Button onPress={logOut}>
-                Log Out
-              </Button>
+              <>
+                <Button onPress={logOut}>
+                  Log Out
+                </Button>
+              </>
             )}
           </NavbarItem>
         </NavbarContent>
@@ -289,7 +352,7 @@ export default function NavBar() {
                   </ModalFooter>
                 </form>
               ) : (
-                <form onSubmit={handleSignUp}>
+                <form onSubmit={validate}>
                   <ModalHeader className="flex flex-col gap-1 text-black">
                     Sign Up
                   </ModalHeader>
@@ -337,20 +400,64 @@ export default function NavBar() {
                       value={username}
                       onValueChange={setUsername}
                       isRequired
+                      isInvalid={validUsername}
                     />
                     <Input
                       label="Email"
+                      type="email"
                       value={email}
                       onValueChange={setEmail}
                       isRequired
                     />
+
                     <Input
                       label="Password"
                       type="password"
                       value={password}
-                      onValueChange={setPassword}
+                      onValueChange={
+                        validatePassword
+                      }
                       isRequired
+                      isInvalid={validPassword}
                     />
+                    <div className=" text-gray-500 text-xs pl-2">
+                      <p>
+                        Password must contain:
+                      </p>
+                      <ul className="pl-4">
+                        <li
+                          className={` ${
+                            password.length >= 8
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          At least 8 characters
+                        </li>
+                        <li
+                          className={` ${
+                            /\d/.test(password)
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          At least 1 number
+                        </li>
+                        <li
+                          className={` ${
+                            /[A-Z]/.test(
+                              password
+                            ) &&
+                            /[a-z]/.test(password)
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          Uppercase AND lowercase
+                          letters
+                        </li>
+                      </ul>
+                    </div>
                     <Input
                       label="Confirm Password"
                       type="password"
@@ -359,6 +466,10 @@ export default function NavBar() {
                         setConfirmPassword
                       }
                       isRequired
+                      isInvalid={
+                        confirmPassword !==
+                        password
+                      }
                     />
 
                     <Select

@@ -1,6 +1,13 @@
 import { useState } from "react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  Button,
+} from "@nextui-org/react";
 import { MdCloudUpload } from "react-icons/md";
-import {AiFillFileImage } from 'react-icons/ai'
+// import {AiFillFileImage } from 'react-icons/ai'
 
 
 export default function Uploader() {
@@ -8,9 +15,9 @@ export default function Uploader() {
   const [fileName, setFileName] = useState("No selected file");
 
   return (
-    <div className="border-0 border-green-200 flex w-2/3 h-full justify-center items-center text-black">
+    <Card className="border-0 border-green-200 flex w-2/3 h-full justify-center items-center text-black">
       <form
-        className="flex flex-col cursor-pointer h-full w-full bg-slate-200 border-0 border-dashed border-blue-500 rounded-lg p-0 items-center justify-center"
+        className="flex flex-col cursor-pointer h-full w-full bg-white border-0 border-dashed border-blue-500 rounded-lg p-0 items-center justify-center"
         onClick={() => document.querySelector(".input-field")} // Corrected onClick function call
       >
         {image ? (
@@ -38,6 +45,6 @@ export default function Uploader() {
       {/* <section>
         <AiFillFileImage />
       </section> */}
-    </div>
+    </Card>
   );
 }

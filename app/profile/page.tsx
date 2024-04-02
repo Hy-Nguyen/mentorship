@@ -6,7 +6,7 @@ import ProfileInfo from "@/components/profile/ProfileInfo";
 import Tags from "@/components/profile/TagsCard";
 
 export default async function Profile() {
-  const id = 23;
+  const id = 23 ;
   const response = await fetch(
     `http://localhost:3000/api/profiles/${id}`
   );

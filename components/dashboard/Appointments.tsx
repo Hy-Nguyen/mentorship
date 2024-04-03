@@ -11,8 +11,10 @@ interface AppointType {
   mentees: string[];
 }
 
-export default async function Appointments() {
-  const id = 49;
+export default async function Appointments(props: {
+  userID: number;
+}) {
+  const id = props.userID;
   const response = await fetch(
     `http://localhost:3000/api/appointment/mentor/${id}`
   );
@@ -23,7 +25,10 @@ export default async function Appointments() {
       <h1 className="text-xl text-black font-bold">
         Appointments
       </h1>
-      <AppointmentTable rows={userAppoint} />
+      <div>
+        
+        <AppointmentTable rows={userAppoint} />
+      </div>
     </div>
   );
 }

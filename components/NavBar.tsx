@@ -137,7 +137,9 @@ export default function NavBar() {
         );
         setLoggedIn(true);
         onClose();
-        router.push("/mentorHome");
+        router.push(
+          `/mentorHome/${data.user.UserID}`
+        );
       } else {
         const data = await response.json();
         setErrorMessage(data.message);

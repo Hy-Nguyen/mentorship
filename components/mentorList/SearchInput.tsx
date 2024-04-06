@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Input from "@nextui-org/react"
 
 
 export default function SearchInput({ onSearch }) {
@@ -13,9 +14,9 @@ export default function SearchInput({ onSearch }) {
   return (
     <div className='px-2 w-1/3'>
       <input
-        className='text-black w-full'
+        className='text-black w-full bg-slate-100 rounded-md'
         type="text"
-        placeholder="Enter name to search ...."
+        placeholder="  Enter name to search"
         value={searchQuery}
         onChange={handleSearch}
       />

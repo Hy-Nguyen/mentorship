@@ -27,12 +27,12 @@ export default function SideBarContent(props: {
     Mentor: {
       name: "Mentors",
       icon: "InboxIcon",
-      link: "/mentors",
+      link: `/mentors/${props.userID}`,
     },
     Calendar: {
-      name: "Calendar",
+      name: "Appointments",
       icon: "CalendarDaysIcon",
-      link: "/",
+      link: `/appointment/${props.userID}`,
     },
     Profile: {
       name: "Profile",

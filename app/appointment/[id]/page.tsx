@@ -42,7 +42,7 @@ async function getMentors() {
   try {
     const { data, error } = await supabase
       .from("Users")
-      .select("name")
+      .select("name, UserID")
       .eq("role", "mentor");
 
     return data;
@@ -86,9 +86,10 @@ export default async function Appointment({
       <SideBar userID={params.id} />
 
       <div className=" flex flex-col w-full items-center justify-center pt-10 space-y-2 ">
-        <h1 className="text-black">{type}</h1>
-
-        <div className="w-full flex justify-center">
+        <div className="w-full flex flex-col items-center space-y-4 justify-center">
+          <h1 className="text-[24px] text-black">
+            Create an Appointment
+          </h1>
           <CreateAppointment
             user={await getName(params.id)}
             type={type}

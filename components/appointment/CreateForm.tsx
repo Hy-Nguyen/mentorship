@@ -12,12 +12,7 @@ import {
 } from "@mui/x-date-pickers";
 import { useState } from "react";
 import { Dayjs } from "dayjs";
-
-function createAppointment(
-  e: React.FormEvent<HTMLFormElement>
-) {
-  e.preventDefault();
-}
+import dayjs from "dayjs";
 
 export default function CreateAppointment(
   props: any
@@ -31,6 +26,9 @@ export default function CreateAppointment(
   const [mentor, setMentor] =
     useState<string>("");
 
+  const [mentee, setMentee] =
+    useState<string>("");
+
   const [topic, setTopic] = useState<
     | string
     | (readonly string[] & string)
@@ -38,16 +36,71 @@ export default function CreateAppointment(
   >();
 
   const user = props.user;
+
   const type = props.type;
   const mentorList = props.mentorList;
+
   const menteeList = props.menteeList;
 
   function press() {
     alert(time);
   }
 
-  function chooseMentor(e) {
+  function chooseMentee(e: any) {
+    setMentee(e.target.value);
+  }
+
+  function chooseMentor(e: any) {
     setMentor(e.target.value);
+  }
+
+  let mentorID: any;
+  let bodyMentees: any;
+  let bodyMenteeID: any;
+
+  if (type === "mentor") {
+    mentorID = user.id;
+    bodyMentees = menteeList[mentee]?.name;
+    bodyMenteeID = menteeList[mentee]?.UserID;
+  } else if (type === "mentee") {
+    mentorID = mentor;
+    bodyMentees = user.name;
+    bodyMenteeID = user.id;
+  }
+
+  async function createAppointment(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/appointment/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            mentorID: mentorID,
+            date: dayjs(date).format(
+              "YYYY-MM-DD"
+            ),
+            time: dayjs(time).format("hh:mm A"),
+            meetingLink: "ZOOM",
+            mentees: bodyMentees,
+            meetingTitle: topic,
+            menteesIDs: bodyMenteeID,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        alert("Booked!");
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
@@ -68,14 +121,13 @@ export default function CreateAppointment(
         />
         {type === "mentor" ? (
           <>
-            <div>{type}</div>
             <Select
               label="Choose Your Mentee"
               variant="bordered"
               placeholder=""
-              selectedKeys={[mentor]}
-              className="max-w-xs"
-              onChange={chooseMentor}
+              selectedKeys={[mentee]}
+              className=""
+              onChange={chooseMentee}
             >
               {menteeList.map(
                 (
@@ -87,7 +139,6 @@ export default function CreateAppointment(
                 ) => (
                   <SelectItem
                     key={i}
-                    value={mentee.UserID}
                     className="text-black"
                   >
                     {mentee.name}
@@ -98,7 +149,31 @@ export default function CreateAppointment(
           </>
         ) : (
           <>
-            <div>{type}</div>
+            <Select
+              label="Choose Your Mentor"
+              variant="bordered"
+              placeholder=""
+              selectedKeys={[mentor]}
+              className=""
+              onChange={chooseMentor}
+            >
+              {mentorList.map(
+                (
+                  mentor: {
+                    name: string;
+                    UserID: number;
+                  },
+                  i: number
+                ) => (
+                  <SelectItem
+                    key={mentor.UserID}
+                    className="text-black"
+                  >
+                    {mentor.name}
+                  </SelectItem>
+                )
+              )}
+            </Select>
           </>
         )}
         <DatePicker
@@ -114,9 +189,7 @@ export default function CreateAppointment(
           className="rounded-xl"
           minutesStep={15}
         />
-        <Button type="button" onPress={press}>
-          See Time
-        </Button>
+        <Button type="submit">See Time</Button>
       </form>
     </>
   );

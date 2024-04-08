@@ -16,7 +16,8 @@ export default async function UserProfile(props: {
 }) {
   const id = props.userID;
   const response = await fetch(
-    `http://localhost:3000/api/profiles/${id}`
+    `http://localhost:3000/api/profiles/${id}`,
+    { cache: "no-store" }
   );
 
   if (response.status === 200) {

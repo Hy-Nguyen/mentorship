@@ -20,9 +20,7 @@ export default async function MentorList() {
   return (
     <>
       <div className="flex flex-col items-start justify-start w-2/3 px-4 pt-4">
-        <h1 className="text-xl text-black font-bold">
-          Mentors
-        </h1>
+        
         {/* SEARCH */}
         {/* FILTER TAGS */}
         <MentorTable mentors={mentors} />

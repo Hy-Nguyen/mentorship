@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/client";
+// import SearchInput from "@/components/mentorList/SearchInput";
+// import { SearchInput } from "@/components/mentorList/SearchInput.tsx"
 
 export async function GET(request: Request) {
   const supabase = createClient();
@@ -7,9 +9,9 @@ export async function GET(request: Request) {
   try {
     const { data: menteeList, error } =
       await supabase
-        .from("Users")
-        .select()
-        .eq("role", "mentor");
+        .from("mentors")
+        .select('*')
+        .ilike('name', `%${searchQuery}%`);
 
     list = menteeList;
   } catch (e) {

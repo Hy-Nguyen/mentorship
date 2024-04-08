@@ -29,7 +29,6 @@ export default function MentorTable(props: any) {
 
   return (
     <>
-      <div>search</div>
       <Table className="text-black mt-4 w-full">
         <TableHeader columns={columns}>
           {(column) => (

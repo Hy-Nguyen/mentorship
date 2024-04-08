@@ -9,7 +9,7 @@ export async function GET(
 ) {
   const supabase = createClient();
   let list;
-  console.log(params);
+
   if (params.query == "undefined") {
     try {
       const { data: menteeList, error } =

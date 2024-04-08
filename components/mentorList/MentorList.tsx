@@ -45,8 +45,6 @@ export default function MentorList() {
     fetchData();
   }, [query]);
 
-  console.table(mentors);
-
   return (
     <>
       <div className="flex flex-col items-start justify-start w-2/3 px-4 pt-4">

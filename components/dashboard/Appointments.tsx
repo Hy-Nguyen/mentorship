@@ -23,7 +23,7 @@ export default async function Appointments(props: {
   const userAppoint = await response.json();
 
   return (
-    <div className="flex flex-col items-start justify-start w-2/3 px-4 pt-4">
+    <div className="flex flex-col items-start justify-start w-1/3 px-4 pt-4">
       <h1 className="text-xl text-black font-bold">
         Appointments
       </h1>

@@ -58,8 +58,6 @@ export default function Interests(props: any) {
         <div className="text-black">
           {!editView ? (
             <>
-              <div>list</div>
-
               <div className="flex flex-col">
                 {createList().map(
                   (interest: any) => (

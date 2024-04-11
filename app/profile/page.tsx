@@ -1,5 +1,4 @@
 import SideBar from "../../components/sidebar/SideBar";
-
 import ProfileCard from "@/components/profile/ProfileCard";
 import SocialCard from "@/components/profile/SocialCard";
 import ProfileInfo from "@/components/profile/ProfileInfo";

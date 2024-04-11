@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import SideBar from "@/components/sidebar/SideBar";
-import Uploader from "@/components/upload/Uploader";
-import UploCheckList from "@/components/upload/CheckList";
+import ResumeUploadCard from "@/components/upload/ResumeUploadCard";
+import TranscriptUploadCard from "@/components/upload/TranscriptUploadCard";
+import FeaturedUploadCard from "@/components/upload/FeaturedMediaUploadCard";
 
 // ================== COLORS AND BORDERS FOR LEARNING PURPOSES ===================
 
@@ -11,16 +12,15 @@ export default function App() {
     <>
       <div className="flex w-full">
         <SideBar />
-
-        {/* <Card> */}
-        <div className="border-0 border-red-200 flex-col flex w-full bg-slate-200 justify-center items-center">
-          {/*Possibly replace with card component*/}
-          <div className="border-0 border-blue-300 flex-row flex w-3/4 h-4/5 ">
-            <Uploader />
-            <UploCheckList />
+        <div className="border-0 border-red-200 flex-col flex w-full h-auto bg-gray-50 px-4 pt-8">
+          <h1 className="text-xl text-black font-bold">Upload Media</h1>
+          <div className="border-0 border-green-300 h-4/5 flex flex-row justify-around items-center pb-4">
+            <ResumeUploadCard />
+            <TranscriptUploadCard />
+            <FeaturedUploadCard />
           </div>
         </div>
-</div>
+      </div>
     </>
   );
 }

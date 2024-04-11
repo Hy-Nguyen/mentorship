@@ -46,7 +46,11 @@ export default function FeaturedUploadCard() {
           >
             {featuredImage ? (
               // Display the uploaded image if available
-              <img src={featuredImage} alt={fileName} />
+              <img
+                src={featuredImage}
+                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                alt={fileName}
+              />
             ) : (
               // Display upload icon if no image is uploaded
               <>

@@ -44,7 +44,11 @@ export default function ResumeUploadCard() {
           >
             {resumeImage ? (
               // Display the uploaded image if available
-              <img src={resumeImage} alt={fileName} />
+              <img
+                src={resumeImage}
+                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                alt={fileName}
+              />
             ) : (
               // Display upload icon if no image is uploaded
               <>

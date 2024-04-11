@@ -46,7 +46,11 @@ export default function TranscriptUploadCard() {
           >
             {transcriptImage ? (
               // Display the uploaded image if available
-              <img src={transcriptImage} alt={fileName} />
+              <img
+                src={transcriptImage}
+                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                alt={fileName}
+              />
             ) : (
               // Display upload icon if no image is uploaded
               <>

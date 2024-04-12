@@ -22,6 +22,19 @@ import { useState } from "react";
 export default function SocialCard(props: any) {
   const user = props.user;
   const [editView, setEditView] = useState(false);
+  const [email, setEmail] = useState(user.email);
+  const [website, setWebsite] = useState(
+    user.socials.website
+  );
+  const [github, setGithub] = useState(
+    user.socials.github
+  );
+  const [linkedin, setLinkedin] = useState(
+    user.socials.linkedIn
+  );
+  const [twitter, setTwitter] = useState(
+    user.socials.twitter
+  );
 
   function submitForm(e: Event) {
     e.preventDefault();
@@ -124,7 +137,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="email"
-                    placeholder={user.email}
+                    value={email}
+                    onValueChange={setEmail}
                     label="E-Mail"
                     labelPlacement="outside"
                     className="w-full"
@@ -134,9 +148,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.website
-                    }
+                    value={website}
+                    onValueChange={setWebsite}
                     label="Website"
                     labelPlacement="outside"
                     className="w-full"
@@ -146,9 +159,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.github
-                    }
+                    value={github}
+                    onValueChange={setGithub}
                     label="GitHub"
                     labelPlacement="outside"
                     className="w-full"
@@ -163,9 +175,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.linkedIn
-                    }
+                    value={linkedin}
+                    onValueChange={setLinkedin}
                     label="LinkedIn"
                     labelPlacement="outside"
                     className="w-full"
@@ -176,7 +187,7 @@ export default function SocialCard(props: any) {
                     }
                   />
                 </div>
-                <Divider className="mx-2" />
+                {/* <Divider className="mx-2" />
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
@@ -192,14 +203,13 @@ export default function SocialCard(props: any) {
                       </p>
                     }
                   />
-                </div>
+                </div> */}
                 <Divider className="mx-2" />
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.twitter
-                    }
+                    value={twitter}
+                    onValueChange={setTwitter}
                     label="Twitter"
                     labelPlacement="outside"
                     className="w-full"

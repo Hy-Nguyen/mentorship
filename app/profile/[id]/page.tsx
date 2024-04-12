@@ -11,23 +11,25 @@ export default async function Profile({
 }: {
   params: { id: number };
 }) {
-  const id = params.id;
-  const response = await fetch(
-    `http://localhost:3000/api/profiles/${id}`,
-    { cache: "no-store" }
-  );
-  const user = await response.json();
+  async function getUser() {
+    const id = params.id;
+    const response = await fetch(
+      `http://localhost:3000/api/profiles/${id}`,
+      { cache: "no-store" }
+    );
+    const user = await response.json();
+    return user;
+  }
 
   return (
     <div className="flex bg-white">
-      <SideBar userID={id} />
+      <SideBar userID={params.id} />
 
       <div className=" flex flex-col w-full items-center pt-10 space-y-2">
-        <ProfileCard user={user} />
-        <ProfileInfo user={user} />
-        <SocialCard user={user} />
+        <ProfileCard user={await getUser()} />
+        <ProfileInfo user={await getUser()} />
+        <SocialCard user={await getUser()} />
         {/* <Interests /> */}
-
       </div>
     </div>
   );

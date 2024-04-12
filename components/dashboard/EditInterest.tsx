@@ -62,11 +62,6 @@ export default function EditInterest(props: any) {
 
   return (
     <>
-      <div>{props.userID}</div>
-      <p className="text-default-500 text-small">
-        Selected:{" "}
-        {selected && selected.join(", ")}
-      </p>
       <CheckboxGroup
         label="Select Interests"
         color="success"

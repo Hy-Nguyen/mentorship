@@ -1,0 +1,46 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@/utils/supabase/client";
+
+export async function POST(request: Request) {
+  const supabase = createClient();
+  let body = await request.json();
+
+  try {
+    const { data: profile, error } =
+      await supabase
+        .from("Profiles")
+        .upsert({
+          id: body.id,
+          phone: body.phone,
+          organization: body.organization,
+          job: body.job,
+          address: body.address,
+        })
+        .eq("id", body.id);
+  } catch (e) {
+    console.log(e);
+    return new NextResponse(
+      JSON.stringify({
+        message: "Unexpected error!",
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
+
+  return new NextResponse(
+    JSON.stringify({
+      message: "Profile Updated!",
+    }),
+    {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+}

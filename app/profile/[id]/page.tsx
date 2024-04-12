@@ -12,13 +12,14 @@ export default async function Profile({
 }) {
   const id = params.id;
   const response = await fetch(
-    `http://localhost:3000/api/profiles/${id}`
+    `http://localhost:3000/api/profiles/${id}`,
+    { cache: "no-store" }
   );
   const user = await response.json();
 
   return (
     <div className="flex bg-white">
-      <SideBar userID={id}/>
+      <SideBar userID={id} />
 
       <div className=" flex flex-col w-full items-center pt-10 space-y-2">
         <ProfileCard user={user} />

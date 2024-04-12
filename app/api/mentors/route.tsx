@@ -9,9 +9,9 @@ export async function GET(request: Request) {
   try {
     const { data: menteeList, error } =
       await supabase
-        .from("mentors")
-        .select('*')
-        .ilike('name', `%${searchQuery}%`);
+        .from("Users")
+        .select("name, email, username")
+        .eq("role", "mentor");
 
     list = menteeList;
   } catch (e) {

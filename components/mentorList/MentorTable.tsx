@@ -41,8 +41,12 @@ export default function MentorTable(props: any) {
           {mentors.map((mentor: any) => (
             <TableRow key={mentor.UserID}>
               <TableCell>{mentor.name}</TableCell>
-              <TableCell>{mentor.name}</TableCell>
-              <TableCell>{mentor.name}</TableCell>
+              <TableCell>
+                {mentor.email}
+              </TableCell>
+              <TableCell>
+                {mentor.username}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

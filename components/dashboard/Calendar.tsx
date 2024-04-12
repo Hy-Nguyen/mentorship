@@ -3,8 +3,6 @@ import {
   Card,
   CardBody,
 } from "@nextui-org/react";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
 export default function Calendar() {
@@ -17,11 +15,7 @@ export default function Calendar() {
       </div>
       <Card className="mt-4">
         <CardBody>
-          <LocalizationProvider
-            dateAdapter={AdapterDayjs}
-          >
-            <DateCalendar />
-          </LocalizationProvider>
+          <DateCalendar />
         </CardBody>
       </Card>
     </div>

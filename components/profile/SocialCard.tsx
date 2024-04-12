@@ -81,7 +81,7 @@ export default function SocialCard(props: any) {
               </div>
               <Divider className="mx-2" />
 
-              <div className=" flex justify-between items-end">
+              {/* <div className=" flex justify-between items-end">
                 <div className="flex flex-row items-center space-x-2">
                   <Handshake className="w-5 h-5" />
                   <h1 className="text-lg   font-bold">
@@ -92,7 +92,7 @@ export default function SocialCard(props: any) {
                   {user.socials.handshake}
                 </div>
               </div>
-              <Divider className="mx-2" />
+              <Divider className="mx-2" /> */}
 
               <div className=" flex justify-between items-end">
                 <div className="flex flex-row items-center space-x-2">

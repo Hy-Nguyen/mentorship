@@ -4,6 +4,7 @@ import ProfileCard from "@/components/profile/ProfileCard";
 import SocialCard from "@/components/profile/SocialCard";
 import ProfileInfo from "@/components/profile/ProfileInfo";
 import Tags from "@/components/profile/TagsCard";
+import Interests from "@/components/dashboard/Interests";
 
 export default async function Profile() {
   const id = 23;
@@ -21,8 +22,7 @@ export default async function Profile() {
         <ProfileCard user={user} />
         <ProfileInfo user={user} />
         <SocialCard user={user} />
-        <Tags />
-        <Tags />
+        {/* <Interests /> */}
       </div>
     </div>
   );

@@ -7,7 +7,10 @@ import { useEffect, useState } from "react";
 
 import { createClient } from "@/utils/supabase/client";
 
+import { useRouter } from "next/navigation";
+
 export default function EditInterest(props: any) {
+  const router = useRouter();
   const [selected, setSelected] = useState([]);
 
   const [interestList, setInterestList] =
@@ -18,7 +21,8 @@ export default function EditInterest(props: any) {
     try {
       const { data, error } = await supabase
         .from("UserInterests")
-        .update({
+        .upsert({
+          id: props.userID,
           interests: selected,
         })
         .eq("id", props.userID);
@@ -28,6 +32,9 @@ export default function EditInterest(props: any) {
 
     alert("Changes Saved");
     props.changeEdit(!props.editState);
+    props.fetchData();
+
+    router.refresh();
   }
 
   useEffect(() => {

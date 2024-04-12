@@ -14,39 +14,40 @@ export default function Interests(props: any) {
   const [fullList, setFullList] = useState([]);
   let userID = props.userID;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3000/api/interests/${props.userID}`,
-          { cache: "no-store", method: "GET" }
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/interests/${props.userID}`,
+        { cache: "no-store", method: "GET" }
+      );
+      if (!response.ok) {
+        throw new Error(
+          "Network response was not ok"
         );
-        if (!response.ok) {
-          throw new Error(
-            "Network response was not ok"
-          );
-        }
-        const data = await response.json();
-        setList(data.userInterests);
-        setFullList(data.fullList);
-      } catch (error) {
-        console.error(error);
       }
-    };
+      const data = await response.json();
+      setList(data.userInterests);
+      setFullList(data.fullList);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    fetchData();
-  }, [props.userID]);
+  fetchData();
 
   function createList() {
     let newList = [];
-    for (let i = 0; i < list.length; i++) {
-      newList.push(fullList[list[i]].interest);
+    if (list) {
+      for (let i = 0; i < list.length; i++) {
+        newList.push(fullList[list[i]].interest);
+      }
+      console.log(newList);
+
+      return newList;
+    } else {
+      return [];
     }
-    console.log(newList);
-
-    return newList;
   }
-
   createList();
 
   return (
@@ -80,6 +81,7 @@ export default function Interests(props: any) {
                 userID={userID}
                 editState={editView}
                 changeEdit={setEditView}
+                fetchData={fetchData}
               />
             </div>
           )}

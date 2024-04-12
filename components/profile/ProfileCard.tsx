@@ -5,7 +5,7 @@ import {
   Card,
   CardBody,
   Avatar,
-  Link
+  Link,
 } from "@nextui-org/react";
 
 import {
@@ -16,10 +16,8 @@ import {
   Twitter,
 } from "lucide-react";
 
-
 export default function ProfileCard(props: any) {
   // Profile Info
-
 
   const user = props.user;
   return (
@@ -32,7 +30,6 @@ export default function ProfileCard(props: any) {
           />
 
           <div className="space-y-2 justify-center">
-
             <h1 className="flex justify-center text-xl font-bold">
               {user.fName} {user.lName}
             </h1>
@@ -44,27 +41,39 @@ export default function ProfileCard(props: any) {
             </p>
 
             <div className="flex justify-center items-center">
-
-              <Link target="_blank" className="p-4" href={`https://${user.socials.website}`}>
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://${user.socials.website}`}
+              >
                 <Globe />
               </Link>
 
-              <Link  target="_blank" className="p-4" href={`https://github.com/${user.socials.github}`}>
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://github.com/${user.socials.github}`}
+              >
                 <Github />
               </Link>
 
-              <Link target="_blank" className="p-4" href={`https://www.linkedin.com/in/${user.socials.linkedin}`}>
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://www.linkedin.com/in/${user.socials.linkedin}`}
+              >
                 <Linkedin />
               </Link>
 
-              <Link target="_blank" className="p-4" href={`https://twitter.com/${user.socials.twitter}`}>
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://twitter.com/${user.socials.twitter}`}
+              >
                 <Twitter />
               </Link>
-
-
             </div>
           </div>
-
         </CardBody>
       </Card>
     </>

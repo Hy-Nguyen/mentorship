@@ -9,7 +9,12 @@ import {
 
 import { UserIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { Github, Globe, Linkedin, Twitter } from "lucide-react";
+import {
+  Github,
+  Globe,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 
 // User Profile fetch. Show user PFP, and bio below. Also show age, as well as account tags
 export default async function UserProfile(props: {
@@ -105,7 +110,7 @@ export default async function UserProfile(props: {
               <h1 className="flex justify-center text-xl font-bold">
                 Profile Not Created
               </h1>
-              <Link href="">
+              <Link href={`/createProfile/${id}`}>
                 <Button
                   color="warning"
                   variant="bordered"

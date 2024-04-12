@@ -36,7 +36,46 @@ export default function SocialCard(props: any) {
     user.socials.twitter
   );
 
-  function submitForm(e: Event) {
+  function handleDiscard(e: any) {
+    setEmail(user.email);
+    setWebsite(user.socials.website);
+    setGithub(user.socials.github);
+    setLinkedin(user.socials.linkedIn);
+    setTwitter(user.socials.twitter);
+    setEditView(!editView);
+  }
+  async function submitForm(e: Event) {
+    let reqBody = {
+      id: user.id,
+      email: email,
+      socials: {
+        github: github,
+        twitter: twitter,
+        website: website,
+        linkedIn: linkedin,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/profiles/update/socials",
+        {
+          cache: "no-store",
+          method: "POST",
+          body: JSON.stringify(reqBody),
+        }
+      );
+      if (!response.ok) {
+        throw new Error(
+          "Network response was not ok"
+        );
+      }
+      const data = await response.json();
+      alert(data.message);
+    } catch (error) {
+      console.error(error);
+    }
+
     e.preventDefault();
     setEditView(!editView);
   }
@@ -93,19 +132,6 @@ export default function SocialCard(props: any) {
                 <p>{user.socials.linkedIn}</p>
               </div>
               <Divider className="mx-2" />
-
-              {/* <div className=" flex justify-between items-end">
-                <div className="flex flex-row items-center space-x-2">
-                  <Handshake className="w-5 h-5" />
-                  <h1 className="text-lg   font-bold">
-                    Handshake:
-                  </h1>
-                </div>
-                <div>
-                  {user.socials.handshake}
-                </div>
-              </div>
-              <Divider className="mx-2" /> */}
 
               <div className=" flex justify-between items-end">
                 <div className="flex flex-row items-center space-x-2">
@@ -227,9 +253,7 @@ export default function SocialCard(props: any) {
                   color="danger"
                   variant="bordered"
                   type="reset"
-                  onClick={() =>
-                    setEditView(!editView)
-                  }
+                  onClick={handleDiscard}
                 >
                   Discard
                 </Button>

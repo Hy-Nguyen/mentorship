@@ -41,7 +41,7 @@ export default function Interests(props: any) {
       for (let i = 0; i < list.length; i++) {
         newList.push(fullList[list[i]].interest);
       }
-      console.log(newList);
+
 
       return newList;
     } else {

@@ -37,7 +37,7 @@ export default function ProfileCard(props: any) {
               {user.job} at {user.organization}
             </p>
             <p className="flex justify-center text-gray-500 text-sm">
-              {user.address.state}
+              {user.address.state }
             </p>
 
             <div className="flex justify-center items-center">
@@ -60,7 +60,7 @@ export default function ProfileCard(props: any) {
               <Link
                 target="_blank"
                 className="p-4"
-                href={`https://www.linkedin.com/in/${user.socials.linkedin}`}
+                href={`https://www.linkedin.com/in/${user.socials.linkedIn}`}
               >
                 <Linkedin />
               </Link>

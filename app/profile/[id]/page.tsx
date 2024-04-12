@@ -5,6 +5,7 @@ import SocialCard from "@/components/profile/SocialCard";
 import ProfileInfo from "@/components/profile/ProfileInfo";
 import Tags from "@/components/profile/TagsCard";
 import Interests from "@/components/dashboard/Interests";
+import UserProfile from "@/components/dashboard/UserProfileDash";
 
 export default async function Profile({
   params,
@@ -18,19 +19,39 @@ export default async function Profile({
       { cache: "no-store" }
     );
     const user = await response.json();
+
     return user;
   }
 
-  return (
-    <div className="flex bg-white">
-      <SideBar userID={params.id} />
+  let user = await getUser();
 
-      <div className=" flex flex-col w-full items-center pt-10 space-y-2">
-        <ProfileCard user={await getUser()} />
-        <ProfileInfo user={await getUser()} />
-        <SocialCard user={await getUser()} />
-        {/* <Interests /> */}
+  if (user.error) {
+    return (
+      <>
+        <div className="flex bg-white">
+          <SideBar userID={params.id} />
+          <div className=" flex mx-auto w-1/2 items-center justify-center ">
+            <UserProfile userID={params.id} />
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <div className="flex bg-white">
+        <SideBar userID={params.id} />
+
+        <div className=" flex flex-col w-full items-center pt-10 space-y-2">
+          <ProfileCard user={await getUser()} />
+          <ProfileInfo user={await getUser()} />
+          <SocialCard user={await getUser()} />
+          {/* <Interests /> */}
+          <div
+            id="spacer"
+            className="py-[50px]"
+          ></div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

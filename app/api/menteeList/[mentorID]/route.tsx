@@ -1,29 +1,27 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/client";
 
-export async function getList(id: string) {
+export async function GET(
+  request: Request,
+  { params }: { params: { mentorID: string } }
+) {
   const supabase = createClient();
-  let mentees;
+  let list;
   try {
     const { data: menteeList, error } =
       await supabase
         .from("mentorship")
         .select("mentee")
-        .eq("mentorid", id);
+        .eq("mentorid", params.mentorID);
 
-    mentees = menteeList;
+    list = menteeList;
   } catch (e) {
     console.log(e);
   }
 
-  return mentees;
-}
-
-export async function GET(
-  request: Request,
-  { params }: { params: { mentorID: string } }
-) {
-  const list = await getList(params.mentorID);
+  if (list?.length === 0) {
+    return NextResponse.json([]);
+  }
 
   return NextResponse.json(list[0].mentee);
 }

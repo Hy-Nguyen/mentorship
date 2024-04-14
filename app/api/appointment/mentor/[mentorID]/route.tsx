@@ -1,16 +1,14 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/client";
 
-export async function getList(id: string) {
+export async function getList(id: number) {
   const supabase = createClient();
   let appointment;
   try {
     const { data: appointmentList, error } =
       await supabase
         .from("Appointments")
-        .select(
-          "meetingID, date, time, meetingTitle, mentees, meetingLink"
-        )
+        .select()
         .eq("mentorID", id);
 
     appointment = appointmentList;
@@ -23,7 +21,7 @@ export async function getList(id: string) {
 
 export async function GET(
   request: Request,
-  { params }: { params: { mentorID: string } }
+  { params }: { params: { mentorID: any } }
 ) {
   const list = await getList(params.mentorID);
 

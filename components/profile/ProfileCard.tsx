@@ -1,10 +1,20 @@
 "use client";
 
+import { Icon } from "@mui/material";
 import {
   Card,
   CardBody,
   Avatar,
+  Link,
 } from "@nextui-org/react";
+
+import {
+  Globe,
+  Mail,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 
 export default function ProfileCard(props: any) {
   // Profile Info
@@ -19,7 +29,7 @@ export default function ProfileCard(props: any) {
             color="success"
           />
 
-          <div className="space-y-2">
+          <div className="space-y-2 justify-center">
             <h1 className="flex justify-center text-xl font-bold">
               {user.fName} {user.lName}
             </h1>
@@ -27,27 +37,43 @@ export default function ProfileCard(props: any) {
               {user.job} at {user.organization}
             </p>
             <p className="flex justify-center text-gray-500 text-sm">
-              {user.address.state}
+              {user.address.state }
             </p>
+
+            <div className="flex justify-center items-center">
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://${user.socials.website}`}
+              >
+                <Globe />
+              </Link>
+
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://github.com/${user.socials.github}`}
+              >
+                <Github />
+              </Link>
+
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://www.linkedin.com/in/${user.socials.linkedIn}`}
+              >
+                <Linkedin />
+              </Link>
+
+              <Link
+                target="_blank"
+                className="p-4"
+                href={`https://twitter.com/${user.socials.twitter}`}
+              >
+                <Twitter />
+              </Link>
+            </div>
           </div>
-
-          {/* <div className="flex justify-center">
-            <button
-              type="button"
-              className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 
-                text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 w-1/2 m-2"
-            >
-              Follow
-            </button>
-
-            <button
-              type="button"
-              className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:border-blue-600 
-                hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 w-1/2 m-2"
-            >
-              Message
-            </button>
-          </div> */}
         </CardBody>
       </Card>
     </>

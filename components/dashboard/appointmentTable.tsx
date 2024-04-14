@@ -35,7 +35,6 @@ export default function AppointmentTable(
     },
   ];
   const row = props.rows;
-  console.log(row);
 
   return (
     <>
@@ -60,7 +59,7 @@ export default function AppointmentTable(
                 {appointment.meetingTitle}
               </TableCell>
               <TableCell>
-                {appointment.mentees.join(", ")}
+                {appointment.mentees}
               </TableCell>
               <TableCell>
                 {appointment.meetingLink}

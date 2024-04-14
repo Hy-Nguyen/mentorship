@@ -9,33 +9,35 @@ import {
 
 import SideNavItem from "./SideNavItem";
 
-export default function SideBarContent() {
+export default function SideBarContent(props: {
+  userID: number;
+}) {
   let iconSize = "w-7 h-7";
 
   let navObj = {
     Home: {
       name: "Home",
       icon: "HomeIcon",
-      link: "/",
+      link: `/mentorHome/${props.userID}`,
     },
     Goals: {
       name: "Goals",
       icon: "CheckCircleIcon",
     },
-    Inbox: {
-      name: "Inbox",
+    Mentor: {
+      name: "Mentors",
       icon: "InboxIcon",
-      link: "/",
+      link: `/mentors/${props.userID}`,
     },
     Calendar: {
-      name: "Calendar",
+      name: "Appointments",
       icon: "CalendarDaysIcon",
-      link: "/",
+      link: `/appointment/${props.userID}`,
     },
     Profile: {
       name: "Profile",
       icon: "UserCircleIcon",
-      link: "/profile",
+      link: `/profile/${props.userID}`,
     },
     Settings: {
       name: "Settings",

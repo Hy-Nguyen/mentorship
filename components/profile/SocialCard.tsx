@@ -22,8 +22,60 @@ import { useState } from "react";
 export default function SocialCard(props: any) {
   const user = props.user;
   const [editView, setEditView] = useState(false);
+  const [email, setEmail] = useState(user.email);
+  const [website, setWebsite] = useState(
+    user.socials.website
+  );
+  const [github, setGithub] = useState(
+    user.socials.github
+  );
+  const [linkedin, setLinkedin] = useState(
+    user.socials.linkedIn
+  );
+  const [twitter, setTwitter] = useState(
+    user.socials.twitter
+  );
 
-  function submitForm(e: Event) {
+  function handleDiscard(e: any) {
+    setEmail(user.email);
+    setWebsite(user.socials.website);
+    setGithub(user.socials.github);
+    setLinkedin(user.socials.linkedIn);
+    setTwitter(user.socials.twitter);
+    setEditView(!editView);
+  }
+  async function submitForm(e: Event) {
+    let reqBody = {
+      id: user.id,
+      email: email,
+      socials: {
+        github: github,
+        twitter: twitter,
+        website: website,
+        linkedIn: linkedin,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/profiles/update/socials",
+        {
+          cache: "no-store",
+          method: "POST",
+          body: JSON.stringify(reqBody),
+        }
+      );
+      if (!response.ok) {
+        throw new Error(
+          "Network response was not ok"
+        );
+      }
+      const data = await response.json();
+      alert(data.message);
+    } catch (error) {
+      console.error(error);
+    }
+
     e.preventDefault();
     setEditView(!editView);
   }
@@ -83,19 +135,6 @@ export default function SocialCard(props: any) {
 
               <div className=" flex justify-between items-end">
                 <div className="flex flex-row items-center space-x-2">
-                  <Handshake className="w-5 h-5" />
-                  <h1 className="text-lg   font-bold">
-                    Handshake:
-                  </h1>
-                </div>
-                <div>
-                  {user.socials.handshake}
-                </div>
-              </div>
-              <Divider className="mx-2" />
-
-              <div className=" flex justify-between items-end">
-                <div className="flex flex-row items-center space-x-2">
                   <Twitter className="w-5 h-5" />
                   <h1 className="text-lg   font-bold">
                     Twitter:
@@ -124,7 +163,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="email"
-                    placeholder={user.email}
+                    value={email}
+                    onValueChange={setEmail}
                     label="E-Mail"
                     labelPlacement="outside"
                     className="w-full"
@@ -134,9 +174,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.website
-                    }
+                    value={website}
+                    onValueChange={setWebsite}
                     label="Website"
                     labelPlacement="outside"
                     className="w-full"
@@ -146,9 +185,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.github
-                    }
+                    value={github}
+                    onValueChange={setGithub}
                     label="GitHub"
                     labelPlacement="outside"
                     className="w-full"
@@ -163,9 +201,8 @@ export default function SocialCard(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.linkedIn
-                    }
+                    value={linkedin}
+                    onValueChange={setLinkedin}
                     label="LinkedIn"
                     labelPlacement="outside"
                     className="w-full"
@@ -176,7 +213,7 @@ export default function SocialCard(props: any) {
                     }
                   />
                 </div>
-                <Divider className="mx-2" />
+                {/* <Divider className="mx-2" />
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
@@ -192,14 +229,13 @@ export default function SocialCard(props: any) {
                       </p>
                     }
                   />
-                </div>
+                </div> */}
                 <Divider className="mx-2" />
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.socials.twitter
-                    }
+                    value={twitter}
+                    onValueChange={setTwitter}
                     label="Twitter"
                     labelPlacement="outside"
                     className="w-full"
@@ -217,9 +253,7 @@ export default function SocialCard(props: any) {
                   color="danger"
                   variant="bordered"
                   type="reset"
-                  onClick={() =>
-                    setEditView(!editView)
-                  }
+                  onClick={handleDiscard}
                 >
                   Discard
                 </Button>

@@ -11,17 +11,73 @@ import {
   useState,
 } from "react";
 
-export default function ProfileInfo(props: any) {
-  const [editView, setEditView] = useState(false);
-  const user = props.user;
+import { useRouter } from "next/navigation";
 
-  function discardChanges(e: MouseEventHandler) {
+export default function ProfileInfo(props: any) {
+  const user = props.user;
+  let router = useRouter();
+
+  const [editView, setEditView] = useState(false);
+  const [fName, setFName] = useState(user.fName);
+  const [lName, setLName] = useState(user.lName);
+  const [phone, setPhone] = useState(user.phone);
+  const [organization, setOrganization] =
+    useState(user.organization);
+  const [title, setTitle] = useState(user.job);
+  const [city, setCity] = useState(
+    user.address.city
+  );
+  const [state, setState] = useState(
+    user.address.state
+  );
+
+  function discardChanges(e: any) {
+    setPhone(user.phone);
+    setOrganization(user.organization);
+    setTitle(user.job);
+    setCity(user.address.city);
+    setState(user.address.state);
     setEditView(!editView);
   }
 
-  function updateProfile(e: Event) {
+  async function updateProfile(e: Event) {
     e.preventDefault();
+    let reqBody = {
+      id: user.id,
+      fName: fName,
+      lName: lName,
+      phone: phone,
+      organization: organization,
+      job: title,
+      address: {
+        city: city,
+        state: state,
+        street: user.address.street,
+        zipCode: user.address.zipCode,
+      },
+    };
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/profiles/update/info",
+        {
+          cache: "no-store",
+          method: "POST",
+          body: JSON.stringify(reqBody),
+        }
+      );
+      if (!response.ok) {
+        throw new Error(
+          "Network response was not ok"
+        );
+      }
+      const data = await response.json();
+      alert(data.message);
+    } catch (error) {
+      console.error(error);
+    }
+
     setEditView(!editView);
+    router.refresh();
   }
 
   return (
@@ -101,21 +157,24 @@ export default function ProfileInfo(props: any) {
                 <div className="flex flex-row space-x-2">
                   <Input
                     type="string"
-                    placeholder={user.fName}
+                    value={fName}
                     label="First Name"
                     labelPlacement="outside"
                     className="w-1/3"
+                    isReadOnly
                   />
                   <Input
                     type="string"
-                    placeholder={user.lName}
+                    value={lName}
                     label="Last Name"
                     labelPlacement="outside"
                     className="w-1/3"
+                    isReadOnly
                   />
                   <Input
                     type="tel"
-                    placeholder={user.phone}
+                    value={phone}
+                    onValueChange={setPhone}
                     label="Phone Number"
                     labelPlacement="outside"
                     className="w-1/3"
@@ -125,8 +184,9 @@ export default function ProfileInfo(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={
-                      user.organization
+                    value={organization}
+                    onValueChange={
+                      setOrganization
                     }
                     label="Organization"
                     labelPlacement="outside"
@@ -137,7 +197,8 @@ export default function ProfileInfo(props: any) {
                 <div className=" flex justify-between items-end">
                   <Input
                     type="string"
-                    placeholder={user.job}
+                    value={title}
+                    onValueChange={setTitle}
                     label="Current Title"
                     labelPlacement="outside"
                     className=""
@@ -148,18 +209,16 @@ export default function ProfileInfo(props: any) {
                   <div className="flex flex-row space-x-2 w-full">
                     <Input
                       type="string"
-                      placeholder={
-                        user.address.city
-                      }
+                      value={city}
+                      onValueChange={setCity}
                       label="City"
                       labelPlacement="outside"
                       className="w-1/2"
                     />
                     <Input
                       type="string"
-                      placeholder={
-                        user.address.state
-                      }
+                      value={state}
+                      onValueChange={setState}
                       label="State"
                       labelPlacement="outside"
                       className="w-1/2"

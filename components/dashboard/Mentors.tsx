@@ -6,10 +6,13 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 
-export default async function Mentors() {
-  const id = 49;
+export default async function Mentors(
+  props: any
+) {
+  const id = props.userID;
   const response = await fetch(
-    `http://localhost:3000/api/menteeList/${id}`
+    `http://localhost:3000/api/menteeList/${id}`,
+    { cache: "no-store" }
   );
   const mentees = await response.json();
 

@@ -11,7 +11,11 @@ export async function getProfile(id: string) {
         .select()
         .eq("id", id);
 
-    appointment = appointmentList[0];
+    if (appointmentList!.length > 0) {
+      appointment = appointmentList![0];
+    } else {
+      appointment = { error: "No Profile Made" };
+    }
   } catch (e) {
     console.log(e);
   }
@@ -25,6 +29,14 @@ export async function GET(
 ) {
   const profile = await getProfile(params.id);
 
+  if (profile.error) {
+    return NextResponse.json(
+      {
+        error: profile.error,
+      },
+      { status: 404 }
+    );
+  }
   return NextResponse.json(profile);
 }
 

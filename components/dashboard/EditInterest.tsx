@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 export default function EditInterest(props: any) {
   const router = useRouter();
   const [selected, setSelected] = useState([]);
+  const [selectedName, setSelectedName] =
+    useState([]);
 
   const [interestList, setInterestList] =
     useState([]);
@@ -24,6 +26,7 @@ export default function EditInterest(props: any) {
         .upsert({
           id: props.userID,
           interests: selected,
+          interest_name: selectedName,
         })
         .eq("id", props.userID);
     } catch (e) {
@@ -35,6 +38,20 @@ export default function EditInterest(props: any) {
     props.fetchData();
 
     router.refresh();
+  }
+  function handleSelect(e) {
+    setSelected(e);
+    setSelectedName(getName(e));
+  }
+
+  function getName(array: Array<number>) {
+    let names = [];
+    for (let i = 0; i < array.length; i++) {
+      names.push(
+        interestList[array[i] - 1].interest
+      );
+    }
+    return names;
   }
 
   useEffect(() => {
@@ -66,15 +83,17 @@ export default function EditInterest(props: any) {
         label="Select Interests"
         color="success"
         value={selected}
-        onValueChange={setSelected}
+        onValueChange={handleSelect}
       >
         {interestList.map((interest: any) => (
-          <Checkbox
-            key={interest.interestid}
-            value={interest.interestid}
-          >
-            {interest.interest}
-          </Checkbox>
+          <>
+            <Checkbox
+              key={interest.name}
+              value={interest.interestid}
+            >
+              {interest.interest}
+            </Checkbox>
+          </>
         ))}
       </CheckboxGroup>
       <Button onPress={saveChanges}>

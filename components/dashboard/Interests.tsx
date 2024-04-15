@@ -11,7 +11,9 @@ import {
 export default function Interests(props: any) {
   const [editView, setEditView] = useState(false);
   const [list, setList] = useState([]);
-  const [fullList, setFullList] = useState([]);
+  const [fullList, setFullList] = useState<
+    Array<{ interest: string }>
+  >([]);
   let userID = props.userID;
 
   const fetchData = async () => {
@@ -37,41 +39,52 @@ export default function Interests(props: any) {
 
   function createList() {
     let newList = [];
-    if (list) {
+
+    if (list && list.length > 0) {
       for (let i = 0; i < list.length; i++) {
-        newList.push(fullList[list[i]].interest);
+        const interest =
+          fullList[list[i]]?.interest;
+        if (interest) {
+          newList.push(interest);
+        }
       }
 
-
-      return newList;
+      if (newList.length > 0) {
+        return newList;
+      } else {
+        return null;
+      }
     } else {
       return [];
     }
   }
-  createList();
 
   return (
     <>
-      <div className="flex flex-col items-start justify-start w-1/3 px-4 pt-4">
+      <div className="flex flex-col items-start justify-start w-[20%] px-4 pt-4">
         <h1 className="text-xl text-black font-bold">
           Your Interests
         </h1>
-        <div className="text-black">
+        <div className="text-black my-4">
           {!editView ? (
             <>
-              <div className="flex flex-col">
-                {createList().map(
-                  (interest: any) => (
-                    <Checkbox
-                      defaultSelected
-                      isDisabled
-                      color="success"
-                      key={interest}
-                      value={interest}
-                    >
-                      {interest}
-                    </Checkbox>
+              <div className="flex flex-col space-y-1 ">
+                {createList() ? (
+                  createList().map(
+                    (interest: any) => (
+                      <Checkbox
+                        defaultSelected
+                        isDisabled
+                        color="success"
+                        key={interest}
+                        value={interest}
+                      >
+                        {interest}
+                      </Checkbox>
+                    )
                   )
+                ) : (
+                  <></>
                 )}
               </div>
             </>
@@ -87,6 +100,7 @@ export default function Interests(props: any) {
           )}
           <Button
             onPress={() => setEditView(!editView)}
+            className="mt-4"
           >
             {editView
               ? "Discard Changes"

@@ -15,6 +15,7 @@ import {
   Input,
   Select,
   SelectItem,
+  Link,
 } from "@nextui-org/react";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
@@ -33,6 +34,8 @@ export default function NavBar() {
   } = useDisclosure();
 
   const [logIn, setLogIn] = useState(true);
+  const [userID, setUserID] = useState(0);
+  const [userRole, setUserRole] = useState("");
 
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -90,6 +93,8 @@ export default function NavBar() {
         localStorage.getItem("userData")
       );
       if (userData) {
+        setUserID(userData.userID);
+        setUserRole(userData.role);
         setLoggedIn(true);
       }
     };
@@ -131,15 +136,23 @@ export default function NavBar() {
         setLogInUser("");
         setLogInPassword("");
 
+        setUserID(data.user.UserID);
+
         storeUserInfo(
           data.user.UserID,
           data.user.role
         );
         setLoggedIn(true);
         onClose();
-        router.push(
-          `/mentorHome/${data.user.UserID}`
-        );
+        if (data.user.role === "Mentor") {
+          router.push(
+            `/mentorHome/${data.user.UserID}`
+          );
+        } else {
+          router.push(
+            `/menteeHome/${data.user.UserID}`
+          );
+        }
       } else {
         const data = await response.json();
         setErrorMessage(data.message);
@@ -255,9 +268,39 @@ export default function NavBar() {
               </Button>
             ) : (
               <>
-                <Button onPress={logOut}>
-                  Log Out
-                </Button>
+                <div className="space-x-4">
+                  {userRole == "mentor" ? (
+                    <Link
+                      href={`/mentorHome/${userID}`}
+                    >
+                      <Button
+                        color="success"
+                        className=""
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link
+                      href={`/menteeHome/${userID}`}
+                    >
+                      <Button
+                        color="success"
+                        className=""
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                  )}
+
+                  <Button
+                    onPress={logOut}
+                    variant="bordered"
+                    color="danger"
+                  >
+                    Log Out
+                  </Button>
+                </div>
               </>
             )}
           </NavbarItem>

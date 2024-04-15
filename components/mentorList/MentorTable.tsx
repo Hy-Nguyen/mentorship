@@ -20,8 +20,8 @@ export default function MentorTable(props: any) {
       label: "E-Mail",
     },
     {
-      key: "UserID",
-      label: "Profile",
+      key: "UserInterests",
+      label: "Interest / Specialization",
     },
   ];
 
@@ -38,17 +38,30 @@ export default function MentorTable(props: any) {
           )}
         </TableHeader>
         <TableBody>
-          {mentors.map((mentor: any) => (
-            <TableRow key={mentor.UserID}>
-              <TableCell>{mentor.name}</TableCell>
-              <TableCell>
-                {mentor.email}
-              </TableCell>
-              <TableCell>
-                {mentor.username}
-              </TableCell>
-            </TableRow>
-          ))}
+          {mentors.map((mentor: any) =>
+            mentor.UserInterests &&
+            mentor.UserInterests.interest_name ? (
+              <TableRow key={mentor.UserID}>
+                <TableCell>
+                  {mentor.name}
+                </TableCell>
+                <TableCell>
+                  {mentor.email}
+                </TableCell>
+                <TableCell>
+                  <h1>
+                    {mentor.UserInterests.interest_name.map(
+                      (interest: any) => (
+                        <div key={interest}>
+                          {interest}
+                        </div>
+                      )
+                    )}
+                  </h1>
+                </TableCell>
+              </TableRow>
+            ) : null
+          )}
         </TableBody>
       </Table>
     </>

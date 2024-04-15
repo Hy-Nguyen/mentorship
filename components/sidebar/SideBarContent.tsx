@@ -9,20 +9,46 @@ import {
 
 import SideNavItem from "./SideNavItem";
 
-export default function SideBarContent(props: {
+import { createClient } from "@/utils/supabase/client";
+
+import { redirect } from "next/navigation";
+
+export default async function SideBarContent(props: {
   userID: number;
 }) {
   let iconSize = "w-7 h-7";
+
+  const supabase = createClient();
+  let role = "";
+
+  try {
+    const { data: user, error } = await supabase
+      .from("Users")
+      .select("role")
+      .eq("UserID", props.userID);
+    if (user?.length != 0) {
+      role = user![0].role;
+    } else {
+    }
+  } catch (e) {
+    console.log(e);
+  }
+
+  let url;
+
+  if (role == "mentor") {
+    url = "mentorHome";
+  } else if (role == "mentee") {
+    url = "menteeHome";
+  } else {
+    url = "mentorHome";
+  }
 
   let navObj = {
     Home: {
       name: "Home",
       icon: "HomeIcon",
-      link: `/mentorHome/${props.userID}`,
-    },
-    Goals: {
-      name: "Goals",
-      icon: "CheckCircleIcon",
+      link: `/${url}/${props.userID}`,
     },
     Mentor: {
       name: "Mentors",

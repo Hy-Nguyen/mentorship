@@ -74,7 +74,7 @@ export default async function UserProfile(props: {
               <Link
                 target="_blank"
                 className="p-4"
-                href={`https://www.linkedin.com/in/${user.socials.linkedin}`}
+                href={`https://www.linkedin.com/in/${user.socials.linkedIn}`}
               >
                 <Linkedin />
               </Link>

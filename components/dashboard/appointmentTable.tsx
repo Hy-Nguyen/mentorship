@@ -38,10 +38,13 @@ export default function AppointmentTable(
 
   return (
     <>
-      <Table className="text-black mt-4 w-full">
+      <Table className="text-black mt-4 min-w-full">
         <TableHeader columns={col}>
           {(column: any) => (
-            <TableColumn key={column.key}>
+            <TableColumn
+              key={column.key}
+              className=""
+            >
               {column.label}
             </TableColumn>
           )}

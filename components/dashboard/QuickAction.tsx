@@ -13,10 +13,6 @@ export default function QuickAction() {
       content: "Go To Profile",
       link: "/profile",
     },
-    {
-      content: "Logout",
-      link: "/logout",
-    },
   ];
   return (
     <div className="flex flex-col items-center justify-center h-1/2 w-11/12 ">

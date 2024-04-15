@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/client";
 
 export async function GET(
   request: Request,
-  { params }: { params: { mentorID: string } }
+  { params }: { params: { id: string } }
 ) {
   const supabase = createClient();
   let list;
@@ -11,8 +11,8 @@ export async function GET(
     const { data: menteeList, error } =
       await supabase
         .from("mentorship")
-        .select("mentee")
-        .eq("mentorid", params.mentorID);
+        .select("mentor_name")
+        .contains("menteeID", [params.id]);
 
     list = menteeList;
 
@@ -20,7 +20,7 @@ export async function GET(
       return NextResponse.json([]);
     }
 
-    return NextResponse.json(list![0].mentee);
+    return NextResponse.json(list);
   } catch (e) {
     console.log(e);
   }

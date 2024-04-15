@@ -8,7 +8,7 @@ export default function QuickAction({ userID }: { userID: string }) {
   const actionList = [
     {
       content: "Schedule a Mentorship Session",
-      link: `/appointments/${userID}`, //Needs work,
+      link: `/appointment/${userID}`, //Needs work,
     },
     {
       content: "Go To Profile",

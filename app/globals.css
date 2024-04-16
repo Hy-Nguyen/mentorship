@@ -25,7 +25,14 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
+.main-bg {
+  background-image: url("https://images.unsplash.com/photo-1528372531841-f1228963b0af?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  /* background-image: url("https://images.unsplash.com/photo-1558346648-9757f2fa4474?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

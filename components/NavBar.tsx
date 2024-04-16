@@ -144,7 +144,7 @@ export default function NavBar() {
         );
         setLoggedIn(true);
         onClose();
-        if (data.user.role === "Mentor") {
+        if (data.user.role === "mentor") {
           router.push(
             `/mentorHome/${data.user.UserID}`
           );
@@ -173,8 +173,6 @@ export default function NavBar() {
     e.preventDefault();
 
     const supabase = createClient();
-
-    console.log("hi");
 
     const { data, error } = await supabase
       .from("Users")
@@ -297,6 +295,7 @@ export default function NavBar() {
                     onPress={logOut}
                     variant="bordered"
                     color="danger"
+                    href="/"
                   >
                     Log Out
                   </Button>

@@ -5,7 +5,6 @@ import { createClient } from "@/utils/supabase/client";
 
 export async function POST(request: Request) {
   const supabase = createClient();
-  console.log("hi");
 
   let body = await request.json();
 
@@ -33,4 +32,25 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json(list);
+}
+
+export async function GET(request: Request) {
+  const supabase = createClient();
+  let list;
+  try {
+    const { data: menteeList, error } =
+      await supabase
+        .from("Users")
+        .select("name")
+        .eq("role", "mentor");
+    return NextResponse.json(menteeList, {
+      status: 200,
+    });
+  } catch (e: any) {
+    console.log(e);
+    return NextResponse.json(
+      { error: e.message },
+      { status: 404 }
+    );
+  }
 }

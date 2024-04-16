@@ -1,6 +1,4 @@
-import { createClient } from "@/utils/supabase/client";
 import AppointmentTable from "@/components/dashboard/appointmentTable";
-import { cache } from "react";
 
 interface AppointType {
   meetingID: number;
@@ -14,13 +12,24 @@ interface AppointType {
 
 export default async function Appointments(props: {
   userID: number;
+  role: string;
 }) {
   const id = props.userID;
-  const response = await fetch(
-    `http://localhost:3000/api/appointment/mentor/${id}`,
-    { cache: "no-store" }
-  );
-  const userAppoint = await response.json();
+  const role = props.role;
+  let response;
+  if (role === "mentor") {
+    response = await fetch(
+      `http://localhost:3000/api/appointment/mentor/${id}`,
+      { cache: "no-store" }
+    );
+  } else if (role === "mentee") {
+    response = await fetch(
+      `http://localhost:3000/api/appointment/mentee/${id}`,
+      { cache: "no-store" }
+    );
+  }
+
+  const userAppoint = await response?.json();
 
   return (
     <div className="flex flex-col items-start justify-start w-[40%] ml-4 pt-4 ">

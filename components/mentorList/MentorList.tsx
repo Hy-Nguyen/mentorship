@@ -43,7 +43,6 @@ export default function MentorList() {
         }
         const data = await response.json();
         setInteresList(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -73,10 +72,13 @@ export default function MentorList() {
 
   return (
     <>
-      <div className="flex flex-col items-start justify-start w-2/3 px-4 pt-4 space-y-4">
+      <div className="flex flex-col items-center justify-start w-1/2 px-4 pt-4 space-y-8">
         {/* SEARCH */}
         {/* FILTER TAGS */}
 
+        <h1 className=" text-xl text-black font-bold text-center">
+          Find Your Mentor!
+        </h1>
         <Input
           placeholder="Search"
           onChange={(e) =>

@@ -39,8 +39,6 @@ export async function POST(
 
       if (menteeList!.length == 0) {
         try {
-          console.log(params.query);
-
           const { data: menteeList, error } =
             await supabase
               .from("Users")

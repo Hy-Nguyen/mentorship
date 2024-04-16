@@ -1,5 +1,6 @@
 "use client";
 
+import { Checkbox } from "@nextui-org/react";
 import {
   Table,
   TableHeader,
@@ -8,8 +9,15 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/table";
+import { useState } from "react";
 
 export default function MentorTable(props: any) {
+  const [selected, setSelected] = useState();
+
+  function handleChange(e: any) {
+    setSelected(e);
+  }
+
   const columns = [
     {
       key: "name",
@@ -29,7 +37,13 @@ export default function MentorTable(props: any) {
 
   return (
     <>
-      <Table className="text-black mt-4 w-full">
+      <Table
+        selectionMode="single"
+        selectedKeys={selected}
+        onSelectionChange={handleChange}
+        className="text-black mt-4 w-full"
+        aria-label=""
+      >
         <TableHeader columns={columns}>
           {(column) => (
             <TableColumn key={column.key}>

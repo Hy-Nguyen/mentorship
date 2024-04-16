@@ -10,15 +10,16 @@ export default function Home({
 }: {
   params: { userID: string };
 }) {
-
-
   return (
-    <main className="flex min-h-screen flex-row bg-white">
-      <SideBar userID={params.userID}/>
+    <div className="flex min-h-screen flex-row">
+      <SideBar userID={params.userID} />
 
       <div className="flex w-full">
-        <Body role = {'mentee'} userID={params.userID} />
+        <Body
+          role={"mentee"}
+          userID={params.userID}
+        />
       </div>
-    </main>
+    </div>
   );
 }

@@ -65,11 +65,6 @@ export default async function SideBarContent(props: {
       icon: "UserCircleIcon",
       link: `/profile/${props.userID}`,
     },
-    Settings: {
-      name: "Settings",
-      icon: "Cog6ToothIcon",
-      link: "/",
-    },
   };
   const icons = {
     HomeIcon: <HomeIcon className={iconSize} />,
@@ -88,7 +83,7 @@ export default async function SideBarContent(props: {
     ),
   };
   return (
-    <div className="">
+    <div className="pl-2">
       <div className="pt-6 flex flex-col items-center space-y-5 ">
         {Object.values(navObj).map((item, i) => (
           <div key={i} className=" w-full">

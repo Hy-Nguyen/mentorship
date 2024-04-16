@@ -12,7 +12,7 @@ import {
 export default async function Mentee(props: any) {
   const id = props.userID;
   const response = await fetch(
-    `http://localhost:3000/api/mentorList/${id}`,
+    `https://mentorship-chi.vercel.app/api/mentorList/${id}`,
     { cache: "no-store" }
   );
   const mentor = await response.json();

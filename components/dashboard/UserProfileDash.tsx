@@ -22,7 +22,7 @@ export default async function UserProfile(props: {
 }) {
   const id = props.userID;
   const response = await fetch(
-    `http://localhost:3000/api/profiles/${id}`,
+    `https://mentorship-chi.vercel.app/api/profiles/${id}`,
     { cache: "no-store" }
   );
 

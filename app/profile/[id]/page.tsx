@@ -15,7 +15,7 @@ export default async function Profile({
   async function getUser() {
     const id = params.id;
     const response = await fetch(
-      `http://localhost:3000/api/profiles/${id}`,
+      `https://mentorship-chi.vercel.app/api/profiles/${id}`,
       { cache: "no-store" }
     );
     const user = await response.json();

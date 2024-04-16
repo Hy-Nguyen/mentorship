@@ -60,7 +60,7 @@ export default function SocialCard(props: any) {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/profiles/update/socials",
+        "https://mentorship-chi.vercel.app/api/profiles/update/socials",
         {
           cache: "no-store",
           method: "POST",

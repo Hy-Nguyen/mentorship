@@ -124,7 +124,7 @@ export default function NavBar() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/login",
+        "https://mentorship-chi.vercel.app/api/login",
         {
           method: "POST",
           headers: {
@@ -219,7 +219,7 @@ export default function NavBar() {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:3000/api/signup",
+        "https://mentorship-chi.vercel.app/api/signup",
         {
           method: "POST",
           headers: {

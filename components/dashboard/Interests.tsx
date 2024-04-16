@@ -21,7 +21,7 @@ export default function Interests(props: any) {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/interests/${props.userID}`,
+        `https://mentorship-chi.vercel.app/api/interests/${props.userID}`,
         { cache: "no-store", method: "GET" }
       );
       if (!response.ok) {

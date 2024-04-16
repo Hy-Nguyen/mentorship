@@ -60,7 +60,7 @@ export default function ProfileInfo(props: any) {
     };
     try {
       const response = await fetch(
-        "http://localhost:3000/api/profiles/update/info",
+        "https://mentorship-chi.vercel.app/api/profiles/update/info",
         {
           cache: "no-store",
           method: "POST",

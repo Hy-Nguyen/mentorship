@@ -27,7 +27,9 @@ import LoadingTable from "./LoadingTable";
 export default function MentorList() {
   const [query, setQuery] = useState("");
   const [mentors, setMentors] = useState();
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<
+    string[]
+  >([]);
   const [interestList, setInteresList] = useState(
     []
   );
@@ -36,7 +38,7 @@ export default function MentorList() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/interests`,
+          `https://mentorship-chi.vercel.app/api/interests`,
           { cache: "no-store", method: "GET" }
         );
         if (!response.ok) {
@@ -51,7 +53,7 @@ export default function MentorList() {
       }
       try {
         const response = await fetch(
-          `http://localhost:3000/api/mentors/${query}`,
+          `https://mentorship-chi.vercel.app/api/mentors/${query}`,
           {
             cache: "no-store",
             method: "POST",

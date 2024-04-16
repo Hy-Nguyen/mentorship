@@ -19,12 +19,12 @@ export default async function Appointments(props: {
   let response;
   if (role === "mentor") {
     response = await fetch(
-      `http://localhost:3000/api/appointment/mentor/${id}`,
+      `https://mentorship-chi.vercel.app/api/appointment/mentor/${id}`,
       { cache: "no-store" }
     );
   } else if (role === "mentee") {
     response = await fetch(
-      `http://localhost:3000/api/appointment/mentee/${id}`,
+      `https://mentorship-chi.vercel.app/api/appointment/mentee/${id}`,
       { cache: "no-store" }
     );
   }

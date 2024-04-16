@@ -78,7 +78,7 @@ export default function CreateAppointment(
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/appointment/create",
+        "https://mentorship-chi.vercel.app/api/appointment/create",
         {
           method: "POST",
           headers: {

@@ -68,7 +68,7 @@ export default function CreateProfileForm(props: {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/profiles/create/${props.user.UserID}`,
+        `https://mentorship-chi.vercel.app/api/profiles/create/${props.user.UserID}`,
         {
           cache: "no-store",
           method: "POST",

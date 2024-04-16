@@ -27,7 +27,7 @@ export default function AddMentor(props: {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/mentors/`,
+          `https://mentorship-chi.vercel.app/api/mentors/`,
           {
             cache: "no-store",
             method: "GET",
@@ -54,7 +54,7 @@ export default function AddMentor(props: {
     e.preventDefault();
 
     let response = await fetch(
-      `http://localhost:3000/api/addmentor/`,
+      `https://mentorship-chi.vercel.app/api/addmentor/`,
       {
         cache: "no-store",
         method: "POST",

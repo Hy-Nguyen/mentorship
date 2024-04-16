@@ -11,7 +11,7 @@ export default async function Mentors(
 ) {
   const id = props.userID;
   const response = await fetch(
-    `http://localhost:3000/api/menteeList/${id}`,
+    `https://mentorship-chi.vercel.app/api/menteeList/${id}`,
     { cache: "no-store" }
   );
   const mentees = await response.json();

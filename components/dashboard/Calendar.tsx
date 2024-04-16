@@ -19,7 +19,9 @@ export default function Calendar() {
           className="mt-4 bg-background/50 "
         >
           <CardBody>
-            <DateCalendar />
+            <div>
+              <DateCalendar />
+            </div>
           </CardBody>
         </Card>
       </div>

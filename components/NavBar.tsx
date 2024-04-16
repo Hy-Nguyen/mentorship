@@ -93,7 +93,7 @@ export default function NavBar() {
       if (data != null) {
         return JSON.parse(data);
       } else {
-        return {};
+        return null;
       }
     }
     const checkUser = () => {

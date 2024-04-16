@@ -1,5 +1,6 @@
 "use client";
 
+import { Card } from "@nextui-org/react";
 import {
   Table,
   TableHeader,
@@ -35,42 +36,65 @@ export default function AppointmentTable(
     },
   ];
   const row = props.rows;
+  console.log(row);
 
   return (
     <>
-      <Table className="text-black mt-4 min-w-full">
-        <TableHeader columns={col}>
-          {(column: any) => (
-            <TableColumn
-              key={column.key}
-              className=""
+      <Card
+        isBlurred
+        shadow="sm"
+        className="w-full bg-background/40 p-2 mt-4"
+      >
+        <Table
+          className="text-black  w-full"
+          aria-label=""
+          removeWrapper={true}
+        >
+          <TableHeader columns={col}>
+            {(column: any) => (
+              <TableColumn
+                key={column.key}
+                className=""
+              >
+                {column.label}
+              </TableColumn>
+            )}
+          </TableHeader>
+          {row.length != 0 ? (
+            <TableBody>
+              {row.map((appointment: any) => (
+                <TableRow
+                  key={appointment.meetingID}
+                >
+                  <TableCell>
+                    {appointment.date}
+                  </TableCell>
+                  <TableCell>
+                    {appointment.time}
+                  </TableCell>
+                  <TableCell>
+                    {appointment.meetingTitle}
+                  </TableCell>
+                  <TableCell>
+                    {appointment.mentees}
+                  </TableCell>
+                  <TableCell>
+                    {appointment.meetingLink}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          ) : (
+            <TableBody
+              emptyContent={
+                "No appointments made."
+              }
             >
-              {column.label}
-            </TableColumn>
+              {[]}
+            </TableBody>
           )}
-        </TableHeader>
-        <TableBody>
-          {row.map((appointment: any) => (
-            <TableRow key={appointment.meetingID}>
-              <TableCell>
-                {appointment.date}
-              </TableCell>
-              <TableCell>
-                {appointment.time}
-              </TableCell>
-              <TableCell>
-                {appointment.meetingTitle}
-              </TableCell>
-              <TableCell>
-                {appointment.mentees}
-              </TableCell>
-              <TableCell>
-                {appointment.meetingLink}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+        </Table>
+      </Card>
     </>
   );
 }

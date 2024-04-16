@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import EditInterest from "./EditInterest";
 import {
   Button,
+  Card,
+  CardBody,
   Checkbox,
   CheckboxGroup,
 } from "@nextui-org/react";
@@ -65,48 +67,59 @@ export default function Interests(props: any) {
         <h1 className="text-xl text-black font-bold">
           Your Interests
         </h1>
-        <div className="text-black my-4">
-          {!editView ? (
-            <>
-              <div className="flex flex-col space-y-1 ">
-                {createList() ? (
-                  createList().map(
-                    (interest: any) => (
-                      <Checkbox
-                        defaultSelected
-                        isDisabled
-                        color="success"
-                        key={interest}
-                        value={interest}
-                      >
-                        {interest}
-                      </Checkbox>
+        <Card
+          isBlurred
+          shadow="sm"
+          className="bg-background/40 text-black mt-4"
+        >
+          <CardBody>
+            {!editView ? (
+              <>
+                <div className="flex flex-col space-y-1 ">
+                  {createList() ? (
+                    createList().map(
+                      (interest: any) => (
+                        // <Checkbox
+                        //   defaultSelected
+                        //   isDisabled
+                        //   color="success"
+                        //   key={interest}
+                        //   value={interest}
+                        // >
+                        //   {interest}
+                        // </Checkbox>
+                        <p key={interest}>
+                          {interest}
+                        </p>
+                      )
                     )
-                  )
-                ) : (
-                  <></>
-                )}
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </>
+            ) : (
+              <div>
+                <EditInterest
+                  userID={userID}
+                  editState={editView}
+                  changeEdit={setEditView}
+                  fetchData={fetchData}
+                />
               </div>
-            </>
-          ) : (
-            <div>
-              <EditInterest
-                userID={userID}
-                editState={editView}
-                changeEdit={setEditView}
-                fetchData={fetchData}
-              />
-            </div>
-          )}
-          <Button
-            onPress={() => setEditView(!editView)}
-            className="mt-4"
-          >
-            {editView
-              ? "Discard Changes"
-              : "Edit"}
-          </Button>
-        </div>
+            )}
+            <Button
+              onPress={() =>
+                setEditView(!editView)
+              }
+              className="mt-4"
+            >
+              {editView
+                ? "Discard Changes"
+                : "Edit"}
+            </Button>
+          </CardBody>
+        </Card>
       </div>
     </>
   );

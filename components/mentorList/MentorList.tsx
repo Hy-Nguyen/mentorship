@@ -15,11 +15,14 @@ import {
   useState,
 } from "react";
 import {
+  Card,
+  CardBody,
   Checkbox,
   CheckboxGroup,
   Input,
   Skeleton,
 } from "@nextui-org/react";
+import LoadingTable from "./LoadingTable";
 
 export default function MentorList() {
   const [query, setQuery] = useState("");
@@ -72,7 +75,7 @@ export default function MentorList() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-start w-1/2 px-4 pt-4 space-y-8">
+      <div className="flex flex-col items-center justify-start w-full pt-4 space-y-4">
         {/* SEARCH */}
         {/* FILTER TAGS */}
 
@@ -80,34 +83,44 @@ export default function MentorList() {
           Find Your Mentor!
         </h1>
         <Input
-          placeholder="Search"
+          placeholder="Search by Name"
           onChange={(e) =>
             setQuery(e.target.value)
           }
         />
-        <CheckboxGroup
-          label="Filter Interests"
-          color="success"
-          value={selected}
-          onValueChange={setSelected}
-          orientation="horizontal"
+        <Card
+          isBlurred
+          shadow="sm"
+          className="bg-background/40"
         >
-          {interestList.map((interest: any) => (
-            <>
-              <Checkbox
-                key={interest.name}
-                value={interest.interest}
-              >
-                {interest.interest}
-              </Checkbox>
-            </>
-          ))}
-        </CheckboxGroup>
+          <CardBody>
+            <CheckboxGroup
+              label="Filter Interests"
+              color="secondary"
+              value={selected}
+              onValueChange={setSelected}
+              orientation="horizontal"
+            >
+              {interestList.map(
+                (interest: any) => (
+                  <>
+                    <Checkbox
+                      key={interest.name}
+                      value={interest.interest}
+                    >
+                      {interest.interest}
+                    </Checkbox>
+                  </>
+                )
+              )}
+            </CheckboxGroup>
+          </CardBody>
+        </Card>
 
         {mentors ? (
           <MentorTable mentors={mentors} />
         ) : (
-          <Skeleton></Skeleton>
+          <LoadingTable />
         )}
       </div>
     </>

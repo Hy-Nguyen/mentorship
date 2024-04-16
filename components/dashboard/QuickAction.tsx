@@ -1,17 +1,20 @@
 import {
   Card,
   CardBody,
+  Link,
 } from "@nextui-org/react";
 
-export default function QuickAction() {
+export default function QuickAction(props: {
+  userID: any;
+}) {
   const actionList = [
     {
       content: "Schedule a Mentorship Session",
-      link: "/schedule",
+      link: `/appointment/${props.userID}`,
     },
     {
       content: "Go To Profile",
-      link: "/profile",
+      link: `/profile/${props.userID}`,
     },
   ];
   return (
@@ -25,7 +28,14 @@ export default function QuickAction() {
       <div className="flex flex-row w-full mt-4 space-x-2">
         {actionList.map((action, i) => (
           <Card className=" " key={i} isBlurred>
-            <CardBody>{action.content}</CardBody>
+            <Link
+              href={action.link}
+              color="foreground"
+            >
+              <CardBody>
+                {action.content}
+              </CardBody>
+            </Link>
           </Card>
         ))}
       </div>

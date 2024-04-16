@@ -78,7 +78,7 @@ export default function EditInterest(props: any) {
   }, [props.userID]);
 
   return (
-    <>
+    <div className="space-y-2 flex flex-col justify-center">
       <CheckboxGroup
         label="Select Interests"
         color="success"
@@ -96,9 +96,12 @@ export default function EditInterest(props: any) {
           </>
         ))}
       </CheckboxGroup>
-      <Button onPress={saveChanges}>
+      <Button
+        onPress={saveChanges}
+        color="success"
+      >
         Save Changes
       </Button>
-    </>
+    </div>
   );
 }

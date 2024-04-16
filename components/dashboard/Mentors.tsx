@@ -33,12 +33,12 @@ export default async function Mentors(
 
       {mentees.length != 0 && (
         <Card
-          className="  mt-4 w-full h-full "
+          className=" bg-background/40  mt-4 w-3/5 h-full "
           isBlurred
         >
           <CardBody className="">
             <AvatarGroup
-              className=" dark text-start flex justify-start pl-4 "
+              className=" dark text-start flex justify-center py-4 "
               total={mentees.length}
             >
               {mentees.map((student, i) => (

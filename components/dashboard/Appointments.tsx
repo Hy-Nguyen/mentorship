@@ -36,7 +36,7 @@ export default async function Appointments(props: {
       <h1 className="text-xl text-black font-bold">
         Appointments
       </h1>
-      <div>
+      <div className="w-full">
         <AppointmentTable rows={userAppoint} />
       </div>
     </div>

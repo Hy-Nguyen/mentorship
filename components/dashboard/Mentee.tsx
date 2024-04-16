@@ -4,6 +4,9 @@ import {
   Avatar,
   AvatarGroup,
   Tooltip,
+  CardFooter,
+  Link,
+  Button,
 } from "@nextui-org/react";
 
 export default async function Mentee(props: any) {
@@ -29,14 +32,14 @@ export default async function Mentee(props: any) {
         </h1>
       </div>
 
-      {(mentor.length != 0) ? (
+      {mentor.length != 0 ? (
         <Card
-          className="  mt-4 w-full h-full "
+          className=" bg-background/40  mt-4 w-3/5 h-full "
           isBlurred
         >
           <CardBody className="">
             <AvatarGroup
-              className=" dark text-start flex justify-start pl-4 "
+              className=" dark text-start flex justify-center py-4 "
               total={mentor.length}
             >
               {mentor.map(
@@ -60,8 +63,40 @@ export default async function Mentee(props: any) {
               )}
             </AvatarGroup>
           </CardBody>
+          {/* <CardFooter>
+            <div className="flex justify-center">
+              {mentor.map(
+                (
+                  ment: { mentor_name: string },
+                  i: number
+                ) => (
+                  <p key={i}>
+                    {ment.mentor_name}
+                  </p>
+                )
+              )}
+            </div>
+          </CardFooter> */}
         </Card>
-      ) : <></>}
+      ) : (
+        <>
+          <Card
+            className=" bg-background/40  mt-4 w-3/5 h-full p-2 "
+            isBlurred
+          >
+            <CardBody className="flex justify-center items-center space-y-3">
+              <h1 className="font-bold">
+                No Mentors Associated
+              </h1>
+              <Link href={`/mentors/${id}`}>
+                <Button color="warning">
+                  Add Mentors Here
+                </Button>
+              </Link>
+            </CardBody>
+          </Card>
+        </>
+      )}
     </div>
   );
 }

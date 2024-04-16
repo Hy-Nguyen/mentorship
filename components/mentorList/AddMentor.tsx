@@ -67,8 +67,12 @@ export default function AddMentor(props: {
   }
 
   return (
-    <div className="w-1/2 flex flex-col pt-[15vh] items ">
-      <Card className="w-11/12 ">
+    <div className="w-full flex flex-col  ">
+      <Card
+        isBlurred
+        shadow="sm"
+        className="w-full bg-background/40"
+      >
         <CardHeader className="flex justify-center items-center text-xl font-bold">
           Enroll under a Mentor!
         </CardHeader>

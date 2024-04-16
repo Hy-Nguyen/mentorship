@@ -13,7 +13,11 @@ export default function Calendar() {
           Calendar
         </h1>
 
-        <Card className="mt-4  ">
+        <Card
+          isBlurred
+          shadow="sm"
+          className="mt-4 bg-background/50 "
+        >
           <CardBody>
             <DateCalendar />
           </CardBody>

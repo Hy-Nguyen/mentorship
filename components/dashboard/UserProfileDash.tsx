@@ -31,16 +31,15 @@ export default async function UserProfile(props: {
 
     return (
       <div className="flex flex-col items-start w-full justify-center h-full">
-        <div>
-          <h1 className="text-black font-bold text-xl">
-            Profile
-          </h1>
-        </div>
-        <Card className=" bg-gray-50 w-11/12  text-black ">
+        <Card
+          isBlurred
+          shadow="sm"
+          className=" bg-background/50 w-11/12 mt-2  text-black "
+        >
           <CardBody className="flex flex-col justify-center items-center">
             <Avatar
               className="w-32 h-32 text-large mb-10"
-              color="success"
+              color="secondary"
             />
 
             <div className="space-y-2">
@@ -94,31 +93,28 @@ export default async function UserProfile(props: {
   } else {
     return (
       <div className="flex flex-col items-start w-full justify-center h-full">
-        <div>
-          <h1 className="text-black font-bold text-xl">
-            Profile
-          </h1>
-        </div>
-        <Card className=" bg-gray-50 w-11/12  text-black ">
-          <CardBody className="flex flex-col justify-center items-center">
+        <Card
+          isBlurred
+          shadow="sm"
+          className=" bg-background/50 w-11/12 mt-2  text-black "
+        >
+          <CardBody className="flex flex-col justify-center items-center space-y-4 mb-2">
             <Avatar
-              className="w-32 h-32 text-large mb-10"
+              className="w-32 h-32 text-large mb-5"
               color="default"
             />
 
-            <div className="space-y-2 flex flex-col items-center justify-center">
-              <h1 className="flex justify-center text-xl font-bold">
-                Profile Not Created
-              </h1>
-              <Link href={`/createProfile/${id}`}>
-                <Button
-                  color="warning"
-                  variant="bordered"
-                >
-                  Create Profile Here
-                </Button>
-              </Link>
-            </div>
+            <h1 className="flex justify-center text-xl font-bold">
+              Profile Not Created
+            </h1>
+            <Link href={`/createProfile/${id}`}>
+              <Button
+                color="warning"
+                variant="solid"
+              >
+                Create Profile Here
+              </Button>
+            </Link>
           </CardBody>
         </Card>
       </div>

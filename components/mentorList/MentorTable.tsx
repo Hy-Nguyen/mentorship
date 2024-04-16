@@ -1,6 +1,9 @@
 "use client";
 
-import { Checkbox } from "@nextui-org/react";
+import {
+  Card,
+  Checkbox,
+} from "@nextui-org/react";
 import {
   Table,
   TableHeader,
@@ -37,47 +40,55 @@ export default function MentorTable(props: any) {
 
   return (
     <>
-      <Table
-        selectionMode="single"
-        selectedKeys={selected}
-        onSelectionChange={handleChange}
-        className="text-black mt-4 w-full"
-        aria-label=""
+      <Card
+        isBlurred
+        className="bg-background/10 flex flex-row w-full p-4"
+        shadow="sm"
       >
-        <TableHeader columns={columns}>
-          {(column) => (
-            <TableColumn key={column.key}>
-              {column.label}
-            </TableColumn>
-          )}
-        </TableHeader>
-        <TableBody>
-          {mentors.map((mentor: any) =>
-            mentor.UserInterests &&
-            mentor.UserInterests.interest_name ? (
-              <TableRow key={mentor.UserID}>
-                <TableCell>
-                  {mentor.name}
-                </TableCell>
-                <TableCell>
-                  {mentor.email}
-                </TableCell>
-                <TableCell>
-                  <h1>
-                    {mentor.UserInterests.interest_name.map(
-                      (interest: any) => (
-                        <div key={interest}>
-                          {interest}
-                        </div>
-                      )
-                    )}
-                  </h1>
-                </TableCell>
-              </TableRow>
-            ) : null
-          )}
-        </TableBody>
-      </Table>
+        <Table
+          selectionMode="single"
+          selectedKeys={selected}
+          onSelectionChange={handleChange}
+          className="text-black mt-4 w-full"
+          aria-label=""
+          removeWrapper={true}
+        >
+          <TableHeader columns={columns}>
+            {(column) => (
+              <TableColumn key={column.key}>
+                {column.label}
+              </TableColumn>
+            )}
+          </TableHeader>
+          <TableBody>
+            {mentors.map((mentor: any) =>
+              mentor.UserInterests &&
+              mentor.UserInterests
+                .interest_name ? (
+                <TableRow key={mentor.UserID}>
+                  <TableCell>
+                    {mentor.name}
+                  </TableCell>
+                  <TableCell>
+                    {mentor.email}
+                  </TableCell>
+                  <TableCell>
+                    <h1>
+                      {mentor.UserInterests.interest_name.map(
+                        (interest: any) => (
+                          <div key={interest}>
+                            {interest}
+                          </div>
+                        )
+                      )}
+                    </h1>
+                  </TableCell>
+                </TableRow>
+              ) : null
+            )}
+          </TableBody>
+        </Table>
+      </Card>
     </>
   );
 }

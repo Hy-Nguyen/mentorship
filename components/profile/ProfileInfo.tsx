@@ -85,7 +85,7 @@ export default function ProfileInfo(props: any) {
       <h1 className="text-black text-xl font-bold pt-4">
         Your Info
       </h1>
-      <Card className=" bg-gray-50 h-full  text-black ">
+      <Card isBlurred className=" bg-background/40 h-full  text-black ">
         {!editView ? (
           <CardBody className="flex justify-center">
             <div className="p-5 space-y-3 flex flex-col ">

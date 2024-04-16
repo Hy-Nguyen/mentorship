@@ -82,14 +82,11 @@ export default async function Appointment({
   let type = await getType(params.id);
 
   return (
-    <div className="flex bg-white">
+    <div className="flex pb-20">
       <SideBar userID={params.id} />
 
       <div className=" flex flex-col w-full items-center justify-center pt-10 space-y-2 ">
         <div className="w-full flex flex-col items-center space-y-4 justify-center">
-          <h1 className="text-[24px] text-black">
-            Create an Appointment
-          </h1>
           <CreateAppointment
             user={await getName(params.id)}
             type={type}

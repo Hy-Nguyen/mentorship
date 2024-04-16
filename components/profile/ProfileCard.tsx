@@ -22,7 +22,7 @@ export default function ProfileCard(props: any) {
   const user = props.user;
   return (
     <>
-      <Card className=" bg-gray-50 w-3/5  text-black ">
+      <Card isBlurred className=" bg-background/40 w-3/5  text-black ">
         <CardBody className="flex flex-col justify-center items-center">
           <Avatar
             className="w-32 h-32 text-large mb-10"
@@ -37,7 +37,7 @@ export default function ProfileCard(props: any) {
               {user.job} at {user.organization}
             </p>
             <p className="flex justify-center text-gray-500 text-sm">
-              {user.address.state }
+              {user.address.state}
             </p>
 
             <div className="flex justify-center items-center">

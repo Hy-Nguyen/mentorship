@@ -86,7 +86,10 @@ export default function SocialCard(props: any) {
           Your Socials
         </h1>
       </div>
-      <Card className=" bg-gray-50 w-full  text-black flex justify-center">
+      <Card
+        isBlurred
+        className=" bg-background/40 w-full  text-black flex justify-center"
+      >
         {!editView ? (
           <CardBody>
             <div className="p-5 space-y-3 flex flex-col ">

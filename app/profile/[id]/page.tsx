@@ -28,7 +28,7 @@ export default async function Profile({
   if (user.error) {
     return (
       <>
-        <div className="flex bg-white">
+        <div className="flex pb-20">
           <SideBar userID={params.id} />
           <div className=" flex mx-auto w-1/2 items-center justify-center ">
             <UserProfile userID={params.id} />
@@ -38,7 +38,7 @@ export default async function Profile({
     );
   } else {
     return (
-      <div className="flex bg-white">
+      <div className="flex pb-20">
         <SideBar userID={params.id} />
 
         <div className=" flex flex-col w-full items-center pt-10 space-y-2">

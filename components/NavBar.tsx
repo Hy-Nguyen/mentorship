@@ -263,7 +263,10 @@ export default function NavBar() {
         <NavbarContent justify="end">
           <NavbarItem>
             {!loggedIn ? (
-              <Button onPress={onOpen}>
+              <Button
+                onPress={onOpen}
+                color="primary"
+              >
                 Log In / Sign Up
               </Button>
             ) : (
@@ -310,7 +313,7 @@ export default function NavBar() {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        className=""
+        className=" "
         backdrop="blur"
       >
         <ModalContent>

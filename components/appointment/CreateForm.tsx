@@ -2,6 +2,9 @@
 
 import {
   Button,
+  Card,
+  CardBody,
+  CardHeader,
   Input,
   Select,
   SelectItem,
@@ -105,92 +108,118 @@ export default function CreateAppointment(
 
   return (
     <>
-      <form
-        onSubmit={createAppointment}
-        className="flex flex-col w-1/3 gap-y-4 text-black"
+      <Card
+        className="flex flex-col w-1/2 bg-background/40"
+        isBlurred
       >
-        <Input
-          label="Your Name"
-          value={user.name}
-          isReadOnly
-        />
-        <Input
-          label="Appointment Topic"
-          value={topic}
-          onValueChange={setTopic}
-        />
-        {type === "mentor" ? (
-          <>
-            <Select
-              label="Choose Your Mentee"
-              variant="bordered"
-              placeholder=""
-              selectedKeys={[mentee]}
-              className=""
-              onChange={chooseMentee}
+        <CardHeader>
+          <h1 className="w-full text-[24px] text-black text-center">
+            Create an Appointment
+          </h1>
+        </CardHeader>
+        <CardBody>
+          <form
+            onSubmit={createAppointment}
+            className="flex flex-col items-center w-full gap-y-4 text-black"
+          >
+            <Input
+              label="Your Name"
+              value={user.name}
+              isReadOnly
+            />
+            <Input
+              label="Appointment Topic"
+              value={topic}
+              onValueChange={setTopic}
+              isRequired
+            />
+            {type === "mentor" ? (
+              <>
+                <Select
+                  label="Choose Your Mentee"
+                  variant="bordered"
+                  placeholder=""
+                  selectedKeys={[mentee]}
+                  className=""
+                  onChange={chooseMentee}
+                  isRequired
+                >
+                  {menteeList.map(
+                    (
+                      mentee: {
+                        name: string;
+                        UserID: number;
+                      },
+                      i: number
+                    ) => (
+                      <SelectItem
+                        key={i}
+                        className="text-black"
+                      >
+                        {mentee.name}
+                      </SelectItem>
+                    )
+                  )}
+                </Select>
+              </>
+            ) : (
+              <>
+                <Select
+                  label="Choose Your Mentor"
+                  variant="bordered"
+                  placeholder=""
+                  selectedKeys={[mentor]}
+                  className=""
+                  onChange={chooseMentor}
+                  isRequired
+                >
+                  {mentorList.map(
+                    (
+                      mentor: {
+                        name: string;
+                        UserID: number;
+                      },
+                      i: number
+                    ) => (
+                      <SelectItem
+                        key={mentor.UserID}
+                        className="text-black"
+                      >
+                        {mentor.name}
+                      </SelectItem>
+                    )
+                  )}
+                </Select>
+              </>
+            )}
+            <DatePicker
+              label="Appointment Date"
+              value={date}
+              onChange={(newDate) =>
+                setDate(newDate)
+              }
+              disablePast
+              className="w-full"
+            />
+            <TimePicker
+              label="Appointment Time"
+              value={time}
+              onChange={(newTime) =>
+                setTime(newTime)
+              }
+              className=" w-full"
+              minutesStep={15}
+            />
+            <Button
+              type="submit"
+              className="w-1/2"
+              color="secondary"
             >
-              {menteeList.map(
-                (
-                  mentee: {
-                    name: string;
-                    UserID: number;
-                  },
-                  i: number
-                ) => (
-                  <SelectItem
-                    key={i}
-                    className="text-black"
-                  >
-                    {mentee.name}
-                  </SelectItem>
-                )
-              )}
-            </Select>
-          </>
-        ) : (
-          <>
-            <Select
-              label="Choose Your Mentor"
-              variant="bordered"
-              placeholder=""
-              selectedKeys={[mentor]}
-              className=""
-              onChange={chooseMentor}
-            >
-              {mentorList.map(
-                (
-                  mentor: {
-                    name: string;
-                    UserID: number;
-                  },
-                  i: number
-                ) => (
-                  <SelectItem
-                    key={mentor.UserID}
-                    className="text-black"
-                  >
-                    {mentor.name}
-                  </SelectItem>
-                )
-              )}
-            </Select>
-          </>
-        )}
-        <DatePicker
-          label="Appointment Date"
-          value={date}
-          onChange={(newDate) => setDate(newDate)}
-          disablePast
-        />
-        <TimePicker
-          label="Appointment Time"
-          value={time}
-          onChange={(newTime) => setTime(newTime)}
-          className="rounded-xl"
-          minutesStep={15}
-        />
-        <Button type="submit">See Time</Button>
-      </form>
+              Submit
+            </Button>
+          </form>
+        </CardBody>
+      </Card>
     </>
   );
 }

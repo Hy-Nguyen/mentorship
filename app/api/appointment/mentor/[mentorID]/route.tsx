@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/client";
 
-export async function getList(id: number) {
+async function getList(id: number) {
   const supabase = createClient();
   let appointment;
   try {

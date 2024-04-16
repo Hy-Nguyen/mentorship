@@ -77,7 +77,7 @@ export default function Interests(props: any) {
               <>
                 <div className="flex flex-col space-y-1 ">
                   {createList() ? (
-                    createList().map(
+                    createList()!.map(
                       (interest: any) => (
                         // <Checkbox
                         //   defaultSelected

@@ -64,7 +64,7 @@ export default function NavBar() {
   const [validPassword, setValidPassword] =
     useState(false);
 
-  const [type, setType] = useState();
+  const [type, setType] = useState<any>();
 
   function storeUserInfo(
     userID: number,
@@ -88,10 +88,20 @@ export default function NavBar() {
   // dayjs().isAfter(
   //   dayjs(userData.expirationTime)
   useEffect(() => {
+    function getInfo() {
+      let data = localStorage.getItem("userData");
+      if (data != null) {
+        return JSON.parse(data);
+      } else {
+        return {};
+      }
+    }
     const checkUser = () => {
-      const userData = JSON.parse(
-        localStorage.getItem("userData")
-      );
+      const userData: {
+        userID: any;
+        role: any;
+      } = getInfo();
+
       if (userData) {
         setUserID(userData.userID);
         setUserRole(userData.role);

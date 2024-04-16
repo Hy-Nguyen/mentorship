@@ -27,7 +27,7 @@ import LoadingTable from "./LoadingTable";
 export default function MentorList() {
   const [query, setQuery] = useState("");
   const [mentors, setMentors] = useState();
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<string[]>([]);
   const [interestList, setInteresList] = useState(
     []
   );

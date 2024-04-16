@@ -41,7 +41,7 @@ export default async function Mentors(
               className=" dark text-start flex justify-center py-4 "
               total={mentees.length}
             >
-              {mentees.map((student, i) => (
+              {mentees.map((student:any, i:number) => (
                 <Tooltip
                   key={i}
                   content={student}

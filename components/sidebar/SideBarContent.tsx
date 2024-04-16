@@ -11,8 +11,6 @@ import SideNavItem from "./SideNavItem";
 
 import { createClient } from "@/utils/supabase/client";
 
-import { redirect } from "next/navigation";
-
 export default async function SideBarContent(props: {
   userID: number;
 }) {
@@ -66,7 +64,20 @@ export default async function SideBarContent(props: {
       link: `/profile/${props.userID}`,
     },
   };
-  const icons = {
+
+  interface Icons {
+    [key: string]: React.ReactElement<
+      any,
+      string
+    >;
+    HomeIcon: any;
+    CheckCircleIcon: any;
+    InboxIcon: any;
+    CalendarDaysIcon: any;
+    UserCircleIcon: any;
+    Cog6ToothIcon: any;
+  }
+  const icons: Icons = {
     HomeIcon: <HomeIcon className={iconSize} />,
     CheckCircleIcon: (
       <CheckCircleIcon className={iconSize} />

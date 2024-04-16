@@ -44,7 +44,9 @@ export default function SocialCard(props: any) {
     setTwitter(user.socials.twitter);
     setEditView(!editView);
   }
-  async function submitForm(e: Event) {
+  async function submitForm(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     let reqBody = {
       id: user.id,
       email: email,

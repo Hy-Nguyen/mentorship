@@ -11,12 +11,14 @@ import { useRouter } from "next/navigation";
 
 export default function EditInterest(props: any) {
   const router = useRouter();
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<any[]>(
+    []
+  );
   const [selectedName, setSelectedName] =
-    useState([]);
+    useState<any[]>([]);
 
   const [interestList, setInterestList] =
-    useState([]);
+    useState<any>([]);
 
   async function saveChanges() {
     const supabase = createClient();
@@ -39,12 +41,12 @@ export default function EditInterest(props: any) {
 
     router.refresh();
   }
-  function handleSelect(e) {
+  function handleSelect(e: any) {
     setSelected(e);
     setSelectedName(getName(e));
   }
 
-  function getName(array: Array<number>) {
+  function getName(array: Array<any>) {
     let names = [];
     for (let i = 0; i < array.length; i++) {
       names.push(

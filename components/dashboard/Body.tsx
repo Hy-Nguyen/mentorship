@@ -15,7 +15,7 @@ export default function Body(props: any) {
   return (
     <div className="flex-col flex w-full   ">
       <div className="flex flex-row w-full h-3/5">
-        <div className="flex flex-col w-5/6 h-full pl-4">
+        <div className="flex flex-col w-1/2 h-full pl-4">
           <QuickAction userID={userID} />
 
           {role === "mentor" ? (
@@ -25,7 +25,7 @@ export default function Body(props: any) {
           )}
         </div>
 
-        <div className="flex h-full w-5/6 p-4">
+        <div className="flex h-full w-1/2 p-4">
           <UserProfile userID={userID} />
         </div>
       </div>

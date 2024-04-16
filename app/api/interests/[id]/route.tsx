@@ -24,7 +24,7 @@ export async function GET(
         .select()
         .eq("id", params.id);
 
-    if (menteeList.length != 0) {
+    if (menteeList!.length != 0) {
       userInterestList = menteeList![0].interests;
     }
   } catch (e) {

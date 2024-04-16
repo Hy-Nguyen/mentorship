@@ -35,6 +35,29 @@ export default function AppointmentTable(
       label: "Meeting ID",
     },
   ];
+
+  const col2 = [
+    {
+      key: "date",
+      label: "Date",
+    },
+    {
+      key: "time",
+      label: "Time",
+    },
+    {
+      key: "meetingTitle",
+      label: "Description",
+    },
+    {
+      key: "mentees",
+      label: "Mentor",
+    },
+    {
+      key: "meetingLink",
+      label: "Meeting ID",
+    },
+  ];
   const row = props.rows;
   console.log(row);
 
@@ -50,16 +73,29 @@ export default function AppointmentTable(
           aria-label=""
           removeWrapper={true}
         >
-          <TableHeader columns={col}>
-            {(column: any) => (
-              <TableColumn
-                key={column.key}
-                className=""
-              >
-                {column.label}
-              </TableColumn>
-            )}
-          </TableHeader>
+          {props.role == "mentor" ? (
+            <TableHeader columns={col}>
+              {(column: any) => (
+                <TableColumn
+                  key={column.key}
+                  className=""
+                >
+                  {column.label}
+                </TableColumn>
+              )}
+            </TableHeader>
+          ) : (
+            <TableHeader columns={col2}>
+              {(column: any) => (
+                <TableColumn
+                  key={column.key}
+                  className=""
+                >
+                  {column.label}
+                </TableColumn>
+              )}
+            </TableHeader>
+          )}
           {row.length != 0 ? (
             <TableBody>
               {row.map((appointment: any) => (
@@ -75,9 +111,15 @@ export default function AppointmentTable(
                   <TableCell>
                     {appointment.meetingTitle}
                   </TableCell>
-                  <TableCell>
-                    {appointment.mentees}
-                  </TableCell>
+                  {props.role == "mentor" ? (
+                    <TableCell>
+                      {appointment.mentees}
+                    </TableCell>
+                  ) : (
+                    <TableCell>
+                      {appointment.Users.name}
+                    </TableCell>
+                  )}
                   <TableCell>
                     {appointment.meetingLink}
                   </TableCell>

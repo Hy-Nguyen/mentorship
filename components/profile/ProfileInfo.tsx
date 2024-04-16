@@ -40,7 +40,9 @@ export default function ProfileInfo(props: any) {
     setEditView(!editView);
   }
 
-  async function updateProfile(e: Event) {
+  async function updateProfile(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     e.preventDefault();
     let reqBody = {
       id: user.id,
@@ -85,7 +87,10 @@ export default function ProfileInfo(props: any) {
       <h1 className="text-black text-xl font-bold pt-4">
         Your Info
       </h1>
-      <Card isBlurred className=" bg-background/40 h-full  text-black ">
+      <Card
+        isBlurred
+        className=" bg-background/40 h-full  text-black "
+      >
         {!editView ? (
           <CardBody className="flex justify-center">
             <div className="p-5 space-y-3 flex flex-col ">

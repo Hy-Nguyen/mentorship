@@ -17,7 +17,7 @@ export default function AddMentor(props: {
   studentID: string;
 }) {
   const [mentorName, setMentorName] =
-    useState("");
+    useState<any>("");
   const [mentorList, setMentorList] = useState(
     []
   );
@@ -47,6 +47,7 @@ export default function AddMentor(props: {
 
     fetchData();
   }, []);
+
   async function handleSubmit(
     e: React.FormEvent
   ) {
@@ -63,7 +64,7 @@ export default function AddMentor(props: {
         }),
       }
     );
-    e.target.reset();
+    (e.target as HTMLFormElement).reset();
   }
 
   return (

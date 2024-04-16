@@ -37,7 +37,10 @@ export default async function Appointments(props: {
         Appointments
       </h1>
       <div className="w-full">
-        <AppointmentTable rows={userAppoint} />
+        <AppointmentTable
+          role={role}
+          rows={userAppoint}
+        />
       </div>
     </div>
   );

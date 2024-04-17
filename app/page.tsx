@@ -31,12 +31,7 @@ export default function Home() {
                 Your One Stop for All Mentorship
               </h1>
             </div>
-            <div className="text-center">
-              <p className="text-center text-gray-500 text-sm">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit.
-              </p>
-            </div>
+            <div className="text-center"></div>
           </CardBody>
         </Card>
         I

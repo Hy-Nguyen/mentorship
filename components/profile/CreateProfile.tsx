@@ -7,8 +7,16 @@ import {
   Button,
   CardHeader,
   CardFooter,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from "@nextui-org/react";
 import { useState } from "react";
+
+import { useRouter } from "next/navigation";
 
 export default function CreateProfileForm(props: {
   user: {
@@ -36,6 +44,8 @@ export default function CreateProfileForm(props: {
   const [github, setGithub] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [twitter, setTwitter] = useState("");
+
+  const router = useRouter();
 
   async function handleSubmit(
     e: React.FormEvent
@@ -82,11 +92,16 @@ export default function CreateProfileForm(props: {
         );
       }
       const data = await response.json();
-      alert(data.message);
+
+      onOpen();
     } catch (e) {
       console.log(e);
     }
   }
+
+  // Modal
+  const { isOpen, onOpen, onOpenChange } =
+    useDisclosure();
 
   return (
     <>
@@ -129,6 +144,7 @@ export default function CreateProfileForm(props: {
                       label="Organization"
                       labelPlacement="outside"
                       className=""
+                      isRequired
                     />
                   </div>
                   <div className=" flex justify-between items-end">
@@ -139,6 +155,7 @@ export default function CreateProfileForm(props: {
                       label="Current Title"
                       labelPlacement="outside"
                       className=""
+                      isRequired
                     />
                   </div>
                   <div className=" flex justify-between items-end">
@@ -150,6 +167,7 @@ export default function CreateProfileForm(props: {
                         label="City"
                         labelPlacement="outside"
                         className="w-1/2"
+                        isRequired
                       />
                       <Input
                         type="string"
@@ -158,6 +176,7 @@ export default function CreateProfileForm(props: {
                         label="State"
                         labelPlacement="outside"
                         className="w-1/2"
+                        isRequired
                       />
                     </div>
                   </div>
@@ -247,6 +266,37 @@ export default function CreateProfileForm(props: {
             </CardFooter>
           </Card>
         </form>
+        <Modal
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          className="text-black"
+          backdrop="blur"
+        >
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader className="flex flex-col w-full text-center gap-1">
+                  Profile Created!
+                </ModalHeader>
+
+                <ModalFooter className="flex w-full justify-center items-center">
+                  <Button
+                    color="success"
+                    variant="shadow"
+                    onPress={() => {
+                      onClose();
+                      router.push(
+                        `/profile/${props.user.UserID}`
+                      );
+                    }}
+                  >
+                    Close
+                  </Button>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
       </div>
     </>
   );

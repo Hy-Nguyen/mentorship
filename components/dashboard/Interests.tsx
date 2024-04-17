@@ -79,18 +79,9 @@ export default function Interests(props: any) {
                   {createList() ? (
                     createList()!.map(
                       (interest: any) => (
-                        // <Checkbox
-                        //   defaultSelected
-                        //   isDisabled
-                        //   color="success"
-                        //   key={interest}
-                        //   value={interest}
-                        // >
-                        //   {interest}
-                        // </Checkbox>
-                        <p key={interest}>
+                        <div key={interest}>
                           {interest}
-                        </p>
+                        </div>
                       )
                     )
                   ) : (

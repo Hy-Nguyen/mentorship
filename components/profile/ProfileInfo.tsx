@@ -5,6 +5,11 @@ import {
   CardBody,
   Divider,
   Input,
+  Modal,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  useDisclosure,
 } from "@nextui-org/react";
 import {
   MouseEventHandler,
@@ -30,6 +35,9 @@ export default function ProfileInfo(props: any) {
   const [state, setState] = useState(
     user.address.state
   );
+
+  const { isOpen, onOpen, onOpenChange } =
+    useDisclosure();
 
   function discardChanges(e: any) {
     setPhone(user.phone);
@@ -73,7 +81,7 @@ export default function ProfileInfo(props: any) {
         );
       }
       const data = await response.json();
-      alert(data.message);
+      onOpen();
     } catch (error) {
       console.error(error);
     }
@@ -254,6 +262,34 @@ export default function ProfileInfo(props: any) {
           </CardBody>
         )}
       </Card>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className="text-black"
+        backdrop="blur"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col w-full text-center gap-1">
+                Profile Updated!
+              </ModalHeader>
+
+              <ModalFooter className="flex w-full justify-center items-center">
+                <Button
+                  color="success"
+                  variant="shadow"
+                  onPress={() => {
+                    onClose();
+                  }}
+                >
+                  Close
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
